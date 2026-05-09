@@ -961,6 +961,43 @@ h3 {
   cursor: pointer;
 }
 
+.hubTabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.hubTabButton {
+  min-height: 44px;
+  padding: 10px 8px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--olive);
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.hubTabButton.active {
+  background: #23362a;
+  color: var(--white);
+}
+
+.hubPanel {
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.hubActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
 .stayGallery {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1122,6 +1159,10 @@ h3 {
 
   .hypeGrid,
   .spotGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hubTabs {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1368,7 +1409,8 @@ h3 {
   .hypeGrid,
   .spotGrid,
   .foodGrid,
-  .momentPicker {
+  .momentPicker,
+  .hubTabs {
     grid-template-columns: 1fr;
   }
 
