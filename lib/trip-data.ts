@@ -623,3 +623,222 @@ export const heroImages = [
     url: "https://images.unsplash.com/photo-1698603616407-1355fe0054d5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1600"
   }
 ];
+
+// Albanian phrases organized by category
+export const albanianPhrases = [
+  {
+    category: "Essentials",
+    phrases: [
+      { albanian: "Tungjatjeta", english: "Hello", pronunciation: "toon-ya-tyet-uh" },
+      { albanian: "Mirëmëngjes", english: "Good morning", pronunciation: "meer-meng-yes" },
+      { albanian: "Mirëdita", english: "Good day", pronunciation: "meer-dee-tuh" },
+      { albanian: "Faleminderit", english: "Thank you", pronunciation: "fah-leh-min-deh-reet" },
+      { albanian: "Po", english: "Yes", pronunciation: "poh" },
+      { albanian: "Jo", english: "No", pronunciation: "yoh" },
+      { albanian: "Më falni", english: "Excuse me", pronunciation: "muh fahl-nee" }
+    ]
+  },
+  {
+    category: "For Food",
+    phrases: [
+      { albanian: "Një tavolinë për dy", english: "A table for two", pronunciation: "nyuh tah-vo-lee-nuh purr dee" },
+      { albanian: "Dua ...", english: "I want ...", pronunciation: "doo-ah" },
+      { albanian: "Sa kushton?", english: "How much?", pronunciation: "sah koosh-ton" },
+      { albanian: "Ujë", english: "Water", pronunciation: "oo-yuh" },
+      { albanian: "Bukë", english: "Bread", pronunciation: "book" },
+      { albanian: "Kafe", english: "Coffee", pronunciation: "kah-feh" }
+    ]
+  },
+  {
+    category: "Getting Around",
+    phrases: [
+      { albanian: "Ku është...?", english: "Where is...?", pronunciation: "koo uh-shuh" },
+      { albanian: "Majtas", english: "Turn left", pronunciation: "mah-lee-tahs" },
+      { albanian: "Djathtas", english: "Turn right", pronunciation: "jaht-tahs" },
+      { albanian: "Drejt", english: "Straight ahead", pronunciation: "dreht" }
+    ]
+  },
+  {
+    category: "Fun",
+    phrases: [
+      { albanian: "Për shëndet!", english: "Cheers! (to health)", pronunciation: "pur shuhn-det" },
+      { albanian: "Shqiptarë", english: "Sons of Eagles", pronunciation: "shchip-tar-uh", note: "What Albanians call themselves!" },
+      { albanian: "S'ka faj", english: "No problem", pronunciation: "skah fyah" }
+    ]
+  }
+];
+
+// Cultural context cards
+export const culturalFacts = [
+  {
+    title: "Besa: Word of Honor",
+    icon: "Shield",
+    emoji: "🛡️",
+    text: "Besa is an ancient code requiring Albanians to protect guests at all costs. During WWII, Albanians sheltered 2,000+ Jewish refugees because of this tradition.",
+    context: "You'll experience this hospitality firsthand!"
+  },
+  {
+    title: "City of 1,000 Windows",
+    icon: "House",
+    emoji: "🏘️",
+    text: "Berat's nickname comes from its stacked Ottoman houses with hundreds of windows facing the river — one of Albania's most photographed views.",
+    context: "Best viewed at golden hour (May 18!)"
+  },
+  {
+    title: "Coffee Culture",
+    icon: "Coffee",
+    emoji: "☕",
+    text: "Albania has one of the world's highest cafe densities. 'Shkojmë për një kafe' (let's go for coffee) means spending hours together — it's about community, not caffeine.",
+    context: "Tirana has the most intense coffee culture"
+  },
+  {
+    title: "The Bunkers",
+    icon: "CircleDot",
+    emoji: "🔵",
+    text: "Dictator Enver Hoxha built 173,000+ concrete bunkers across Albania fearing invasion. Now they're hostels, art galleries, and pizza ovens.",
+    context: "You'll spot them along every road!"
+  },
+  {
+    title: "Pyramid of Tirana",
+    icon: "Triangle",
+    emoji: "🔺",
+    text: "Originally built as a mausoleum for dictator Enver Hoxha, it's now a tech/arts center where kids sled down its slopes. Symbol of Albania's transformation.",
+    context: "On your May 23 itinerary — climb it for sunset!"
+  },
+  {
+    title: "Illyrian Heritage",
+    icon: "BookOpen",
+    emoji: "📜",
+    text: "Albanians are descendants of Illyrians — one of Europe's oldest continuous cultures. Their language and traditions predate the Romans.",
+    context: "You're walking paths that are 2,000+ years old"
+  }
+];
+
+// Money info and typical costs
+export const moneyInfo = {
+  currency: {
+    name: "Albanian Lek",
+    code: "ALL",
+    symbol: "L",
+    usdRate: 0.011 // approximate: 1 LEK ≈ $0.011 USD (or 1 USD ≈ 91 LEK)
+  },
+  tips: [
+    "Cash is king — especially in mountains (Theth) and small guesthouses",
+    "Tirana and Sarande are more card-friendly",
+    "Tip 10% in lek, not euro",
+    "ATMs widely available in cities"
+  ],
+  typicalCosts: [
+    { item: "Local meal (byrek + drink)", lek: 300, category: "food" },
+    { item: "Restaurant dinner with drink", lek: 1500, category: "food" },
+    { item: "Coffee at a cafe", lek: 150, category: "food" },
+    { item: "Beer at a bar", lek: 300, category: "food" },
+    { item: "Raki at tavern", lek: 250, category: "food" },
+    { item: "Bottle of water", lek: 100, category: "food" },
+    { item: "Furgon (bus) ride", lek: 500, category: "transport" },
+    { item: "Blue Eye entrance", lek: 200, category: "activity" },
+    { item: "Butrint entrance", lek: 700, category: "activity" }
+  ]
+};
+
+// Travel tips and cautions
+export const travelTips = [
+  {
+    category: "Money & Payments",
+    icon: "DollarSign",
+    emoji: "💰",
+    tips: [
+      "Exchange money at banks or authorized exchanges (avoid street offers)",
+      "Keep small bills — vendors often don't have change for 5000 LEK notes",
+      "ATMs accept Visa/Mastercard but can run out of cash in small towns",
+      "Euro is sometimes accepted but you'll get worse rates"
+    ],
+    warning: false
+  },
+  {
+    category: "Road Safety",
+    icon: "Car",
+    emoji: "🚗",
+    tips: [
+      "Mountain roads (Theth, Berat) are narrow and winding but paved",
+      "Headlight use is required 24/7 while driving in Albania",
+      "Watch for livestock on rural roads (goats, cows, sheep)",
+      "Parking in Tirana can be chaotic — use hotel parking when available"
+    ],
+    warning: true
+  },
+  {
+    category: "Cultural Etiquette",
+    icon: "Users",
+    emoji: "🤝",
+    tips: [
+      "Remove shoes when entering Albanian homes (hosts offer slippers)",
+      "Dress modestly in northern mountain villages (Theth)",
+      "Accept offered refreshments — it's considered rude to decline",
+      "Eye contact during toasts ('Për shëndet!') is important"
+    ],
+    warning: false
+  },
+  {
+    category: "Head Nodding Quirk",
+    icon: "AlertCircle",
+    emoji: "⚠️",
+    tips: [
+      "In some regions, nodding UP means NO, and DOWN means YES",
+      "This is opposite of Western convention — double-check verbally!",
+      "When in doubt, use 'Po' (yes) or 'Jo' (no) to avoid confusion",
+      "Locals will understand if you seem confused — just be explicit"
+    ],
+    warning: true
+  },
+  {
+    category: "Beach & Water Safety",
+    icon: "Waves",
+    emoji: "🌊",
+    tips: [
+      "Gjipe Beach requires a 20-30 min hike — bring water and proper shoes",
+      "Sea urchins common near rocky shores — water shoes recommended",
+      "Jellyfish rare but possible in late spring (May is generally safe)",
+      "Lifeguards not common — swim at your own risk in most places"
+    ],
+    warning: false
+  },
+  {
+    category: "Ferry Tips (Corfu)",
+    icon: "Anchor",
+    emoji: "⛴️",
+    tips: [
+      "Arrive 1 hour before departure for passport control",
+      "Bring physical passports (photos not accepted)",
+      "Corfu is 1 hour ahead of Albania — remember to adjust your watch!",
+      "Seas can be rough — bring motion sickness pills if needed",
+      "Book tickets in advance for May 22 (peak season starts)"
+    ],
+    warning: true
+  },
+  {
+    category: "Health & Wellness",
+    icon: "Heart",
+    emoji: "⚕️",
+    tips: [
+      "Tap water not recommended for drinking in most areas",
+      "Pharmacies widely available — basic meds inexpensive",
+      "Sunscreen expensive — bring from home if needed",
+      "No special vaccinations required for Albania",
+      "Travel insurance recommended (standard for Europe)"
+    ],
+    warning: false
+  },
+  {
+    category: "Connectivity",
+    icon: "Wifi",
+    emoji: "📶",
+    tips: [
+      "Buy local SIM (Vodafone or One) at airport for €15-20 with data",
+      "WiFi common in hotels/cafes but can be slow",
+      "Download offline Google Maps for mountain areas",
+      "WhatsApp widely used for restaurant bookings"
+    ],
+    warning: false
+  }
+];

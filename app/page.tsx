@@ -3,25 +3,41 @@
 import Link from "next/link";
 import { useState } from "react";
 import {
+  AlertCircle,
+  Anchor,
   ArrowRight,
   BookOpen,
   CalendarDays,
+  Car,
   CheckCircle2,
+  CircleDot,
   ClipboardList,
+  Coffee,
+  DollarSign,
   ExternalLink,
+  Heart,
   MapPinned,
+  Shield,
   Sparkles,
+  Triangle,
+  Users,
+  Waves,
+  Wifi,
   X
 } from "lucide-react";
 import {
+  albanianPhrases,
+  culturalFacts,
   heroImages,
   hypeMoments,
+  moneyInfo,
   quickLinks,
   sourceLinks,
   spotBacklog,
   statCards,
   stays,
   topQuestions,
+  travelTips,
   tripDays
 } from "@/lib/trip-data";
 
@@ -44,8 +60,19 @@ type HomeTabId = (typeof homeTabs)[number]["id"];
 export default function Home() {
   const [activeTab, setActiveTab] = useState<HomeTabId>("itinerary");
   const [activeMomentTitle, setActiveMomentTitle] = useState<string | null>(null);
+  const [activePhraseCategory, setActivePhraseCategory] = useState<string>(albanianPhrases[0].category);
+  const [lekAmount, setLekAmount] = useState<number>(1000);
   const activeMomentDetail = hypeMoments.find((moment) => moment.title === activeMomentTitle) ?? null;
   const nextStay = stays[0];
+
+  const usdAmount = (lekAmount * moneyInfo.currency.usdRate).toFixed(2);
+
+  // Close modal on Escape key
+  if (typeof window !== "undefined") {
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setActiveMomentTitle(null);
+    });
+  }
 
   return (
     <main>
@@ -62,9 +89,9 @@ export default function Home() {
           </Link>
           <div className="navLinks">
             {sections.map((section) => (
-              <a key={section.href} href={section.href}>
+              <Link key={section.href} href={section.href}>
                 {section.label}
-              </a>
+              </Link>
             ))}
           </div>
         </nav>
@@ -74,14 +101,14 @@ export default function Home() {
           <h1>Albania Trip Hub</h1>
           <p className="heroCopy">Home is a launcher. Tap into each section for full details.</p>
           <div className="heroActions" aria-label="Primary actions">
-            <a href="/itinerary" className="primaryButton">
+            <Link href="/itinerary" className="primaryButton">
               <CalendarDays size={18} />
               Open Itinerary
-            </a>
-            <a href="/stays" className="secondaryButton">
+            </Link>
+            <Link href="/stays" className="secondaryButton">
               <BookOpen size={18} />
               Open Stays
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -125,6 +152,7 @@ export default function Home() {
               key={tab.id}
               role="tab"
               aria-selected={activeTab === tab.id}
+              aria-controls={`panel-${tab.id}`}
               className={activeTab === tab.id ? "hubTabButton active" : "hubTabButton"}
               type="button"
               onClick={() => setActiveTab(tab.id)}
@@ -135,7 +163,7 @@ export default function Home() {
         </div>
 
         {activeTab === "itinerary" ? (
-          <article className="hubPanel" role="tabpanel">
+          <article className="hubPanel" role="tabpanel" id="panel-itinerary">
             <span className="smallLabel">Route + day plans</span>
             <h3>Itinerary</h3>
             <p>
@@ -143,15 +171,15 @@ export default function Home() {
               {tripDays[tripDays.length - 1]?.shortDate}.
             </p>
             <div className="hubActions">
-              <a href="/itinerary" className="cardActionButton">
+              <Link href="/itinerary" className="cardActionButton">
                 Open itinerary <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
           </article>
         ) : null}
 
         {activeTab === "stays" ? (
-          <article className="hubPanel" role="tabpanel">
+          <article className="hubPanel" role="tabpanel" id="panel-stays">
             <span className="smallLabel">Lodging</span>
             <h3>Stays</h3>
             <p>
@@ -159,15 +187,15 @@ export default function Home() {
               page.
             </p>
             <div className="hubActions">
-              <a href="/stays" className="cardActionButton">
+              <Link href="/stays" className="cardActionButton">
                 Open stays <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
           </article>
         ) : null}
 
         {activeTab === "explore" ? (
-          <article className="hubPanel" role="tabpanel">
+          <article className="hubPanel" role="tabpanel" id="panel-explore">
             <span className="smallLabel">Food + spots</span>
             <h3>Explore</h3>
             <p>Use Explore for must-go spots and vegetarian food targets.</p>
@@ -180,15 +208,15 @@ export default function Home() {
               ))}
             </div>
             <div className="hubActions">
-              <a href="/explore" className="cardActionButton">
+              <Link href="/explore" className="cardActionButton">
                 Open explore <ArrowRight size={16} />
-              </a>
+              </Link>
             </div>
           </article>
         ) : null}
 
         {activeTab === "decisions" ? (
-          <article className="hubPanel" role="tabpanel">
+          <article className="hubPanel" role="tabpanel" id="panel-decisions">
             <span className="smallLabel">Open items</span>
             <h3>Decisions</h3>
             <ul className="modalList">
@@ -231,6 +259,174 @@ export default function Home() {
               ))}
             </ul>
           </aside>
+        </div>
+      </section>
+
+      {/* Albanian Phrases Section */}
+      <section className="section" id="phrases">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Language</p>
+            <h2>Essential Albanian Phrases</h2>
+          </div>
+        </div>
+        <div className="hubTabs" role="tablist" aria-label="Phrase categories">
+          {albanianPhrases.map((category) => (
+            <button
+              key={category.category}
+              role="tab"
+              className={activePhraseCategory === category.category ? "hubTabButton active" : "hubTabButton"}
+              type="button"
+              onClick={() => setActivePhraseCategory(category.category)}
+            >
+              {category.category}
+            </button>
+          ))}
+        </div>
+        <div className="hubPanel">
+          <div className="phraseList">
+            {albanianPhrases
+              .find((c) => c.category === activePhraseCategory)
+              ?.phrases.map((phrase, idx) => (
+                <div className="phraseCard" key={idx}>
+                  <div>
+                    <strong>{phrase.albanian}</strong>
+                    <p className="pronunciation">{phrase.pronunciation}</p>
+                  </div>
+                  <div className="phraseMeaning">
+                    <p>{phrase.english}</p>
+                    {phrase.note ? <p className="phraseNote">{phrase.note}</p> : null}
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Cultural Context Section */}
+      <section className="section" id="culture">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Know Before You Go</p>
+            <h2>Cultural Context</h2>
+          </div>
+        </div>
+        <div className="cultureGrid">
+          {culturalFacts.map((fact, idx) => {
+            const IconComponent = {
+              Shield,
+              House: MapPinned,
+              Coffee,
+              CircleDot,
+              Triangle: MapPinned,
+              BookOpen
+            }[fact.icon] || Shield;
+            return (
+              <article className="cultureCard" key={idx}>
+                <div className="cultureIcon">
+                  <IconComponent size={24} />
+                </div>
+                <h3>{fact.title}</h3>
+                <p>{fact.text}</p>
+                <p className="cultureContext">{fact.context}</p>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Money Section with Calculator */}
+      <section className="section" id="money">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Budget</p>
+            <h2>Money & Costs</h2>
+          </div>
+        </div>
+        <div className="moneyLayout">
+          <div className="moneyPanel">
+            <div className="panelHeader">
+              <DollarSign size={20} />
+              <span>LEK to USD Converter</span>
+            </div>
+            <div className="calculator">
+              <div className="calcInput">
+                <input
+                  type="number"
+                  value={lekAmount}
+                  onChange={(e) => setLekAmount(Number(e.target.value))}
+                  min="0"
+                  step="100"
+                />
+                <span className="currencyLabel">LEK</span>
+              </div>
+              <div className="calcResult">
+                <strong>${usdAmount}</strong>
+                <span className="currencyLabel">USD</span>
+              </div>
+            </div>
+            <p className="exchangeRate">Rate: 1 USD ≈ 91 LEK</p>
+          </div>
+          <div className="costsPanel">
+            <div className="panelHeader">
+              <Coffee size={20} />
+              <span>Typical Costs</span>
+            </div>
+            <ul className="costList">
+              {moneyInfo.typicalCosts.slice(0, 6).map((cost, idx) => (
+                <li key={idx}>
+                  <span>{cost.item}</span>
+                  <strong>~{cost.lek} LEK</strong>
+                  <span className="usdCost">(~${(cost.lek * moneyInfo.currency.usdRate).toFixed(2)})</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="moneyTips">
+          {moneyInfo.tips.map((tip, idx) => (
+            <span className="moneyTipBadge" key={idx}>
+              <CheckCircle2 size={14} />
+              {tip}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      {/* Travel Tips Section */}
+      <section className="section" id="tips">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Be Prepared</p>
+            <h2>Travel Tips & Cautions</h2>
+          </div>
+        </div>
+        <div className="tipsGrid">
+          {travelTips.map((category, idx) => {
+            const IconComponent = {
+              DollarSign,
+              Car,
+              Users,
+              AlertCircle,
+              Waves,
+              Anchor,
+              Heart,
+              Wifi
+            }[category.icon] || AlertCircle;
+            return (
+              <article className={`tipCard ${category.warning ? "warning" : ""}`} key={idx}>
+                <div className="tipHeader">
+                  <IconComponent size={20} />
+                  <h3>{category.category}</h3>
+                </div>
+                <ul>
+                  {category.tips.map((tip, tipIdx) => (
+                    <li key={tipIdx}>{tip}</li>
+                  ))}
+                </ul>
+              </article>
+            );
+          })}
         </div>
       </section>
 

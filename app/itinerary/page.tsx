@@ -49,28 +49,36 @@ export default function ItineraryPage() {
         </div>
       </section>
 
-      <div className="subPageGrid">
+      <div className="timeline">
         {tripDays.map((day) => (
-          <article className="subCard" key={day.id}>
-            <span className="smallLabel">
-              {day.weekday} {day.shortDate}
-            </span>
-            <h3>{day.location}</h3>
-            <p>{day.date}</p>
-            {day.transport?.map((item) => (
-              <p className="detailLine" key={item}>
-                <Plane size={16} />
-                {item}
-              </p>
-            ))}
-            <ul className="planList">
-              {day.plans.map((plan) => (
-                <li key={plan}>
-                  <CircleDot size={14} />
-                  {plan}
-                </li>
+          <article className="dayCard" key={day.id}>
+            <div className="datePill">
+              <span>{day.weekday}</span>
+              <strong>{day.shortDate}</strong>
+            </div>
+            <div className="dayBody">
+              <div className="dayTopline">
+                <h3>{day.location}</h3>
+                {day.status ? (
+                  <span className={`status ${day.status.replace(" ", "-")}`}>{day.status}</span>
+                ) : null}
+              </div>
+              <p>{day.date}</p>
+              {day.transport?.map((item) => (
+                <p className="detailLine" key={item}>
+                  <Plane size={16} />
+                  {item}
+                </p>
               ))}
-            </ul>
+              <ul className="planList">
+                {day.plans.map((plan) => (
+                  <li key={plan}>
+                    <CircleDot size={14} />
+                    {plan}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </div>

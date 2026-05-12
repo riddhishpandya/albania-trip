@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "WebSearch",
+      "WebFetch(domain:www.albania.al)",
+      "WebFetch(domain:www.nationalgeographic.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:edition.cnn.com)",
+      "WebFetch(domain:www.britannica.com)",
+      "WebFetch(domain:theculturetrip.com)",
+      "WebFetch(domain:www.bbc.com)",
+      "WebFetch(domain:www.visit-albania.al)",
+      "WebFetch(domain:en.wikivoyage.org)",
+      "WebFetch(domain:www.travelageless.com)",
+      "WebFetch(domain:www.thebrokebackpacker.com)"
+    ]
+  }
+}

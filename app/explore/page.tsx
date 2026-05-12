@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, MapPinned } from "lucide-react";
 import { foodQuest, mustGoSpots } from "@/lib/trip-data";
 
 export default function ExplorePage() {
@@ -14,29 +14,52 @@ export default function ExplorePage() {
         <p>Must-go spots and vegetarian food highlights.</p>
       </div>
 
-      <div className="subPageGrid">
-        {mustGoSpots.map((spot) => (
-          <article className="subCard" key={spot.title}>
-            <span className="smallLabel">
-              {spot.area} · {spot.kind}
-            </span>
-            <h3>{spot.title}</h3>
-            <p>{spot.why}</p>
-            <p>{spot.bestFor}</p>
-          </article>
-        ))}
-      </div>
+      <section>
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Must-visit</p>
+            <h2>Top Spots</h2>
+          </div>
+        </div>
+        <div className="spotGrid">
+          {mustGoSpots.map((spot) => (
+            <article className="spotCard" key={spot.title}>
+              <div className="spotTop">
+                <span>{spot.kind}</span>
+                <strong>{spot.area}</strong>
+              </div>
+              <h3>{spot.title}</h3>
+              <p>{spot.why}</p>
+              <div className="spotFooter">
+                <MapPinned size={16} />
+                {spot.bestFor}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
 
-      <div className="subPageGrid">
-        {foodQuest.map((food) => (
-          <article className="subCard" key={food.dish}>
-            <img className="subCardImage" src={food.image} alt="" />
-            <span className="smallLabel">{food.area}</span>
-            <h3>{food.dish}</h3>
-            <p>{food.why}</p>
-          </article>
-        ))}
-      </div>
+      <section className="mustSection">
+        <div className="sectionHeader">
+          <div>
+            <p className="sectionKicker">Food quest</p>
+            <h2>Vegetarian Highlights</h2>
+          </div>
+        </div>
+        <div className="foodGrid">
+          {foodQuest.map((food) => (
+            <article className="foodCard" key={food.dish}>
+              <img src={food.image} alt={`${food.dish} dish`} />
+              <div className="foodContent">
+                <span className="smallLabel">{food.area}</span>
+                <h3>{food.dish}</h3>
+                <p>{food.why}</p>
+                {food.target ? <strong>{food.target}</strong> : null}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

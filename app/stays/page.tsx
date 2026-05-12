@@ -22,17 +22,30 @@ export default function StaysPage() {
 
       <div className="subPageGrid">
         {stays.map((stay) => (
-          <article className="subCard" key={stay.id}>
-            <img className="subCardImage" src={stay.images[0]} alt="" />
-            <span className="smallLabel">{stay.dates}</span>
-            <h3>{stay.name}</h3>
-            <p>{stay.location}</p>
-            <p>{stayStatusLabels[stay.status]}</p>
-            {stay.note ? <p>{stay.note}</p> : null}
-            <a href={stay.url} target="_blank" rel="noreferrer" className="cardActionButton">
-              <ExternalLink size={16} />
-              Open stay link
-            </a>
+          <article className="stayCard" key={stay.id}>
+            <img className="stayHero" src={stay.images[0]} alt={`${stay.name} exterior`} />
+            <div className="stayContent">
+              <div className="stayTopline">
+                <h3>{stay.name}</h3>
+                <span className={`stayStatus ${stay.status}`}>{stayStatusLabels[stay.status]}</span>
+              </div>
+              <p>{stay.location}</p>
+              <p>{stay.dates}</p>
+              {stay.note ? <p className="stayNote">{stay.note}</p> : null}
+              <div className="stayActions">
+                <a href={stay.url} target="_blank" rel="noreferrer">
+                  <ExternalLink size={16} />
+                  View stay
+                </a>
+              </div>
+              {stay.images.length > 1 ? (
+                <div className="stayGallery">
+                  {stay.images.slice(1, 4).map((img, idx) => (
+                    <img key={idx} src={img} alt={`${stay.name} photo ${idx + 2}`} />
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </article>
         ))}
       </div>
