@@ -810,7 +810,7 @@ export const travelTips = [
       "Jellyfish rare but possible in late spring (May is generally safe)",
       "Lifeguards not common — swim at your own risk in most places"
     ],
-    warning: false
+    warning: true
   },
   {
     category: "Ferry Tips (Corfu)",

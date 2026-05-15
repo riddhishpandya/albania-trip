@@ -1438,6 +1438,19 @@ h3 {
   gap: 14px;
 }
 
+.tipSection {
+  margin-top: 20px;
+}
+
+.tipSectionLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 10px 0;
+}
+
 .tabTipsGrid {
   margin-top: 16px;
 }

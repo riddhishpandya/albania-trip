@@ -406,33 +406,45 @@ export default function Home() {
           <article className="hubPanel" role="tabpanel" id="panel-tips">
             <span className="smallLabel">Travel notes</span>
             <h3>Tips & Cautions</h3>
-            <div className="tipsGrid tabTipsGrid">
-              {travelTips.map((category, idx) => {
-                const IconComponent = {
-                  DollarSign,
-                  Car,
-                  Users,
-                  AlertCircle,
-                  Waves,
-                  Anchor,
-                  Heart,
-                  Wifi
-                }[category.icon] || AlertCircle;
-                return (
-                  <article className={`tipCard ${category.warning ? "warning" : ""}`} key={idx}>
-                    <div className="tipHeader">
-                      <IconComponent size={20} />
-                      <h3>{category.category}</h3>
-                    </div>
-                    <ul>
-                      {category.tips.map((tip, tipIdx) => (
-                        <li key={tipIdx}>{tip}</li>
-                      ))}
-                    </ul>
-                  </article>
-                );
-              })}
-            </div>
+            {[
+              { label: "Good to Know", filter: false },
+              { label: "Watch Out", filter: true },
+            ].map(({ label, filter }) => {
+              const iconMap: Record<string, React.ElementType> = {
+                DollarSign,
+                Car,
+                Users,
+                AlertCircle,
+                Waves,
+                Anchor,
+                Heart,
+                Wifi,
+              };
+              const cards = travelTips.filter((c) => c.warning === filter);
+              return (
+                <div key={label} className="tipSection">
+                  <p className="tipSectionLabel">{label}</p>
+                  <div className="tipsGrid tabTipsGrid">
+                    {cards.map((category, idx) => {
+                      const IconComponent = iconMap[category.icon] || AlertCircle;
+                      return (
+                        <article className={`tipCard ${filter ? "warning" : ""}`} key={idx}>
+                          <div className="tipHeader">
+                            <IconComponent size={20} />
+                            <h3>{category.category}</h3>
+                          </div>
+                          <ul>
+                            {category.tips.map((tip, tipIdx) => (
+                              <li key={tipIdx}>{tip}</li>
+                            ))}
+                          </ul>
+                        </article>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
           </article>
         ) : null}
 
