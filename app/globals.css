@@ -1,31 +1,39 @@
 :root {
-  --ink: #17201b;
-  --muted: #607066;
-  --line: #dce3dd;
-  --paper: #f7f5ee;
-  --white: #fffdf8;
-  --sage: #8fa391;
-  --olive: #3f5f48;
-  --clay: #b65f45;
-  --sun: #e5b758;
-  --sea: #397c8b;
-  --sky: #d7e9ec;
-  --shadow: 0 20px 60px rgba(25, 32, 27, 0.14);
+  --ink: #112336;
+  --muted: #627180;
+  --line: #d7e2e7;
+  --paper: #f4f8f7;
+  --white: #ffffff;
+  --sage: #80b8ad;
+  --olive: #174f5f;
+  --clay: #e06f56;
+  --sun: #f0b84f;
+  --sea: #138aa0;
+  --sky: #d8eef2;
+  --deep: #153a5b;
+  --soft-coral: #fff1ec;
+  --soft-sea: #e7f6f7;
+  --soft-sun: #fff5db;
+  --shadow: 0 20px 60px rgba(17, 35, 54, 0.13);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #e8e6df;
-    --muted: #9aa39c;
-    --line: #2a2d2b;
-    --paper: #161715;
-    --white: #212320;
-    --sage: #8fa391;
-    --olive: #c4d5c8;
-    --clay: #d88f76;
-    --sun: #f0c96b;
-    --sea: #6dbab3;
-    --sky: #2a3f42;
+    --ink: #edf7fb;
+    --muted: #a9bac4;
+    --line: #273d4c;
+    --paper: #08141d;
+    --white: #122433;
+    --sage: #8fd0c5;
+    --olive: #9fdae1;
+    --clay: #ff9578;
+    --sun: #f4c96b;
+    --sea: #66cedd;
+    --sky: #183849;
+    --deep: #d8eef2;
+    --soft-coral: #2d1f21;
+    --soft-sea: #15303c;
+    --soft-sun: #332b18;
     --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   }
 }
@@ -78,7 +86,7 @@ main {
   inset: 0;
   z-index: -1;
   content: "";
-  background: linear-gradient(90deg, rgba(18, 29, 24, 0.82), rgba(18, 29, 24, 0.34) 58%, rgba(18, 29, 24, 0.64));
+  background: linear-gradient(90deg, rgba(9, 24, 38, 0.86), rgba(19, 90, 106, 0.32) 58%, rgba(11, 32, 48, 0.7));
 }
 
 .heroMedia {
@@ -118,6 +126,7 @@ main {
 .questionPanel li,
 .backlog li,
 .factsPanel li,
+.quickStrip a,
 .sourceList a {
   display: flex;
   align-items: center;
@@ -285,7 +294,8 @@ h3 {
   padding: 34px 0 16px;
 }
 
-.quickStrip span {
+.quickStrip a,
+.quickStrip button {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -294,8 +304,26 @@ h3 {
   border: 1px solid var(--line);
   background: rgba(255, 253, 248, 0.7);
   color: var(--muted);
+  cursor: pointer;
+  font: inherit;
   font-size: 0.88rem;
   font-weight: 750;
+  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.quickStrip a:hover,
+.quickStrip a:focus-visible,
+.quickStrip button:hover,
+.quickStrip button:focus-visible {
+  border-color: var(--sage);
+  background: var(--white);
+  color: var(--olive);
+}
+
+.quickStrip a:focus-visible,
+.quickStrip button:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
 }
 
 .section,
@@ -352,7 +380,7 @@ h3 {
   margin-top: 22px;
   padding: 16px;
   border: 1px solid var(--line);
-  background: #f3f6ef;
+  background: var(--soft-sea);
   color: var(--olive);
   font-weight: 750;
   line-height: 1.45;
@@ -397,7 +425,7 @@ h3 {
 
 .momentPicker button:hover,
 .momentPicker button.active {
-  background: #23362a;
+  background: var(--deep);
   color: var(--white);
 }
 
@@ -446,7 +474,7 @@ h3 {
 .miniTags span {
   min-height: 28px;
   padding: 6px 9px;
-  background: #eef4ef;
+  background: var(--soft-sea);
   color: var(--olive);
   font-size: 0.78rem;
   font-weight: 850;
@@ -488,8 +516,8 @@ h3 {
 .spotTop span {
   min-height: 28px;
   padding: 6px 9px;
-  background: #fff0d3;
-  color: #8a5416;
+  background: var(--soft-sun);
+  color: #8a5a12;
   font-size: 0.76rem;
   font-weight: 900;
 }
@@ -648,7 +676,7 @@ h3 {
   align-content: flex-start;
   gap: 8px;
   padding: 22px 18px;
-  background: #23362a;
+  background: var(--deep);
   color: var(--white);
 }
 
@@ -690,19 +718,19 @@ h3 {
 }
 
 .status.booked {
-  background: #e8f2e9;
-  color: #2e6a40;
+  background: var(--soft-sea);
+  color: #126071;
 }
 
 .status.needs-plan,
 .status.open {
-  background: #fff0d3;
-  color: #8a5416;
+  background: var(--soft-sun);
+  color: #8a5a12;
 }
 
 .status.travel-heavy {
-  background: #e4f1f4;
-  color: #245e6a;
+  background: #e4f4fb;
+  color: #155a83;
 }
 
 .detailLine {
@@ -720,7 +748,7 @@ h3 {
 
 .planList li {
   gap: 10px;
-  color: #314039;
+  color: var(--ink);
   line-height: 1.45;
 }
 
@@ -739,7 +767,7 @@ h3 {
   gap: 7px;
   min-height: 30px;
   padding: 6px 10px;
-  background: #eef4ef;
+  background: var(--soft-sea);
   color: var(--olive);
   font-size: 0.82rem;
   font-weight: 800;
@@ -809,7 +837,7 @@ h3 {
 
 .combinedMarker {
   border-radius: 999px;
-  background: #23362a;
+  background: var(--deep);
 }
 
 .combinedMarker span {
@@ -917,16 +945,16 @@ h3 {
 .stayStatus {
   min-height: 27px;
   padding: 6px 9px;
-  background: #e8f2e9;
-  color: #2e6a40;
+  background: var(--soft-sea);
+  color: #126071;
   font-size: 0.72rem;
   font-weight: 850;
   text-transform: uppercase;
 }
 
 .stayStatus.hold {
-  background: #fff0d3;
-  color: #8a5416;
+  background: var(--soft-sun);
+  color: #8a5a12;
 }
 
 .stayCard p {
@@ -962,7 +990,7 @@ h3 {
 }
 
 .stayActions a {
-  background: #23362a;
+  background: var(--deep);
   color: var(--white);
 }
 
@@ -985,7 +1013,7 @@ h3 {
 
 .hubTabs {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
   gap: 8px;
   margin-bottom: 12px;
 }
@@ -1004,11 +1032,11 @@ h3 {
 }
 
 .hubTabButton:hover {
-  background: rgba(35, 54, 42, 0.1);
+  background: var(--soft-sea);
 }
 
 .hubTabButton.active {
-  background: #23362a;
+  background: var(--deep);
   color: var(--white);
 }
 
@@ -1016,6 +1044,39 @@ h3 {
   padding: 18px;
   border: 1px solid var(--line);
   background: var(--white);
+}
+
+.factPanel {
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--white), var(--soft-sea) 62%, var(--soft-sun));
+}
+
+.funFactCallout {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--sea) 28%, var(--line));
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.funFactCallout svg {
+  flex: 0 0 auto;
+  color: var(--clay);
+}
+
+.funFactCallout p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.05rem;
+  line-height: 1.55;
+}
+
+.funFactCallout strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--olive);
+  line-height: 1.45;
 }
 
 .hubActions {
@@ -1058,7 +1119,7 @@ h3 {
   display: grid;
   place-items: center;
   padding: 18px;
-  background: rgba(20, 29, 24, 0.72);
+  background: rgba(8, 20, 29, 0.74);
   animation: fadeIn 0.2s ease;
 }
 
@@ -1200,15 +1261,29 @@ h3 {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  width: 100%;
   padding: 16px;
   border: 1px solid var(--line);
-  background: rgba(239, 244, 239, 0.5);
-  transition: background 0.2s ease;
+  background: var(--soft-sea);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   will-change: background;
 }
 
-.phraseCard:hover {
-  background: rgba(239, 244, 239, 0.8);
+.phraseCard:hover,
+.phraseCard:focus-visible,
+.phraseCard.speaking {
+  border-color: var(--sea);
+  background: var(--white);
+  transform: translateY(-1px);
+}
+
+.phraseCard:focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 2px;
 }
 
 .phraseCard strong {
@@ -1224,8 +1299,15 @@ h3 {
 }
 
 .phraseMeaning {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
   text-align: right;
   flex: 1;
+}
+
+.phraseMeaning svg {
+  color: var(--clay);
 }
 
 .phraseMeaning p {
@@ -1240,66 +1322,16 @@ h3 {
   margin-top: 4px !important;
 }
 
-/* Cultural Context Section */
-.cultureGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.cultureCard {
-  padding: 20px;
-  border: 1px solid var(--line);
-  background: var(--white);
-  box-shadow: 0 8px 20px rgba(25, 32, 27, 0.06);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  will-change: transform;
-}
-
-.cultureCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 35px rgba(25, 32, 27, 0.12);
-}
-
-.cultureIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  background: #23362a;
-  color: var(--sun);
-}
-
-.cultureCard h3 {
-  margin: 0 0 8px;
-  font-size: 1.05rem;
-}
-
-.cultureCard p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.5;
-  font-size: 0.9rem;
-}
-
-.cultureContext {
-  margin-top: 10px !important;
-  padding-top: 10px;
-  border-top: 1px solid var(--line);
-  color: var(--olive);
-  font-weight: 750;
-  font-size: 0.82rem;
-}
-
 /* Money Section */
 .moneyLayout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 1.3fr);
   gap: 18px;
   margin-bottom: 16px;
+}
+
+.tabMoneyLayout {
+  margin-top: 16px;
 }
 
 .moneyPanel,
@@ -1427,6 +1459,10 @@ h3 {
   gap: 14px;
 }
 
+.tabTipsGrid {
+  margin-top: 16px;
+}
+
 .tipCard {
   padding: 20px;
   border: 1px solid var(--line);
@@ -1504,6 +1540,7 @@ h3 {
   .researchLayout,
   .stayGrid,
   .foodLayout,
+  .moneyLayout,
   .subPageGrid {
     grid-template-columns: 1fr;
   }
@@ -1523,7 +1560,8 @@ h3 {
   }
 
   .hypeGrid,
-  .spotGrid {
+  .spotGrid,
+  .tipsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -1653,7 +1691,8 @@ h3 {
     padding-top: 22px;
   }
 
-  .quickStrip span {
+  .quickStrip a,
+  .quickStrip button {
     justify-content: flex-start;
     min-height: 40px;
     padding: 9px 10px;
@@ -1774,9 +1813,14 @@ h3 {
   .hypeGrid,
   .spotGrid,
   .foodGrid,
+  .tipsGrid,
   .momentPicker,
   .hubTabs {
     grid-template-columns: 1fr;
+  }
+
+  #dashboard > .hubTabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .momentPanel {

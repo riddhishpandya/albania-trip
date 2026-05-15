@@ -39,7 +39,7 @@ export default function ExplorePage() {
         </div>
       </section>
 
-      <section className="mustSection">
+      <section className="mustSection" id="food">
         <div className="sectionHeader">
           <div>
             <p className="sectionKicker">Food quest</p>

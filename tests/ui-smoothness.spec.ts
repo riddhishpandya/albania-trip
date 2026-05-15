@@ -35,7 +35,7 @@ test.describe('UI Smoothness & Visual Quality', () => {
 
   test('should render tabs without layout shift', async ({ page }) => {
     // Click through tabs and check for layout stability
-    const tabs = ['Itinerary', 'Stays', 'Explore', 'Decisions'];
+    const tabs = ['Itinerary', 'Stays', 'Explore', 'Language', 'Costs', 'Tips', 'Fun Facts', 'Decisions'];
 
     for (const tab of tabs) {
       const tabButton = page.locator('button', { hasText: tab });
@@ -78,11 +78,8 @@ test.describe('UI Smoothness & Visual Quality', () => {
     expect(errors.length).toBe(0);
   });
 
-  test('should render phrases section smoothly', async ({ page }) => {
-    // Navigate to phrases section
-    await page.evaluate(() => {
-      document.getElementById('phrases')?.scrollIntoView({ behavior: 'smooth' });
-    });
+  test('should render language tab smoothly', async ({ page }) => {
+    await page.getByRole('tab', { name: 'Language' }).click();
 
     await page.waitForTimeout(500);
 
@@ -90,28 +87,38 @@ test.describe('UI Smoothness & Visual Quality', () => {
     const categories = ['Essentials', 'For Food', 'Getting Around', 'Fun'];
 
     for (const category of categories) {
-      const button = page.locator('button', { hasText: category });
+      const button = page.locator('#panel-language button', { hasText: category });
       await button.click();
       await page.waitForTimeout(150);
 
       // Verify phrases load without jank
-      const phraseCount = await page.locator('.phraseCard').count();
+      const phraseCount = await page.locator('#panel-language .phraseCard').count();
       expect(phraseCount).toBeGreaterThan(0);
     }
   });
 
   test('should have smooth calculator interaction', async ({ page }) => {
-    const input = await page.locator('input[type="number"]').first();
+    await page.getByRole('tab', { name: 'Costs' }).click();
+
+    const input = await page.locator('#panel-costs input[type="number"]').first();
 
     await input.fill('2000');
     await page.waitForTimeout(200);
 
-    const result = await page.locator('.calcResult strong');
+    const result = await page.locator('#panel-costs .calcResult strong');
     await expect(result).toBeVisible();
 
     // Verify USD amount updates
     const usdText = await result.textContent();
     expect(usdText).toContain('$');
+  });
+
+  test('should render travel tips tab smoothly', async ({ page }) => {
+    await page.getByRole('tab', { name: 'Tips' }).click();
+
+    const tipCards = page.locator('#panel-tips .tipCard');
+    await expect(tipCards.first()).toBeVisible();
+    await expect(tipCards).toHaveCount(8);
   });
 
   test('should have smooth image loading', async ({ page }) => {

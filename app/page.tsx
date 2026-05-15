@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AlertCircle,
   Anchor,
@@ -17,10 +17,10 @@ import {
   ExternalLink,
   Heart,
   MapPinned,
-  Shield,
   Sparkles,
-  Triangle,
+  Languages,
   Users,
+  Volume2,
   Waves,
   Wifi,
   X
@@ -28,6 +28,7 @@ import {
 import {
   albanianPhrases,
   culturalFacts,
+  funFacts,
   heroImages,
   hypeMoments,
   moneyInfo,
@@ -52,27 +53,98 @@ const homeTabs = [
   { id: "itinerary", label: "Itinerary" },
   { id: "stays", label: "Stays" },
   { id: "explore", label: "Explore" },
+  { id: "language", label: "Language" },
+  { id: "costs", label: "Costs" },
+  { id: "tips", label: "Tips" },
+  { id: "fact", label: "Fun Facts" },
   { id: "decisions", label: "Decisions" }
 ] as const;
 
 type HomeTabId = (typeof homeTabs)[number]["id"];
 
+const quickLinkTargets: Record<string, string> = {
+  Flights: "/itinerary",
+  Drives: "/itinerary#route",
+  Food: "/explore#food",
+  Coffee: "/explore#food",
+  Views: "/explore",
+  Ferries: "/itinerary#route",
+  Facts: "/#dashboard",
+  Links: "/#research"
+};
+
+type FunFact = {
+  title: string;
+  text: string;
+  note?: string;
+};
+
+const allFunFacts: FunFact[] = [
+  ...funFacts.map((fact) => ({ title: "Albania Fun Fact", text: fact })),
+  ...culturalFacts.map((fact) => ({
+    title: fact.title,
+    text: fact.text,
+    note: fact.context
+  }))
+];
+
+function getRandomFunFact() {
+  return allFunFacts[Math.floor(Math.random() * allFunFacts.length)];
+}
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState<HomeTabId>("itinerary");
   const [activeMomentTitle, setActiveMomentTitle] = useState<string | null>(null);
   const [activePhraseCategory, setActivePhraseCategory] = useState<string>(albanianPhrases[0].category);
+  const [dailyFunFact, setDailyFunFact] = useState<FunFact>(allFunFacts[0]);
+  const [spokenPhrase, setSpokenPhrase] = useState<string | null>(null);
   const [lekAmount, setLekAmount] = useState<number>(1000);
   const activeMomentDetail = hypeMoments.find((moment) => moment.title === activeMomentTitle) ?? null;
   const nextStay = stays[0];
+  const activePhraseGroup = albanianPhrases.find((category) => category.category === activePhraseCategory);
 
   const usdAmount = (lekAmount * moneyInfo.currency.usdRate).toFixed(2);
 
-  // Close modal on Escape key
-  if (typeof window !== "undefined") {
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") setActiveMomentTitle(null);
-    });
-  }
+  const speakPhrase = (phrase: string) => {
+    if (!("speechSynthesis" in window)) {
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(phrase);
+    utterance.lang = "sq-AL";
+    utterance.rate = 0.86;
+
+    utterance.onstart = () => setSpokenPhrase(phrase);
+    utterance.onend = () => setSpokenPhrase(null);
+    utterance.onerror = () => setSpokenPhrase(null);
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  useEffect(() => {
+    const closeModal = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setActiveMomentTitle(null);
+      }
+    };
+
+    window.addEventListener("keydown", closeModal);
+
+    return () => {
+      window.removeEventListener("keydown", closeModal);
+    };
+  }, []);
+
+  useEffect(() => {
+    setDailyFunFact(getRandomFunFact());
+  }, []);
+
+  const openFunFacts = () => {
+    setActiveTab("fact");
+    document.getElementById("dashboard")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
     <main>
@@ -99,7 +171,7 @@ export default function Home() {
         <div className="heroContent">
           <p className="eyebrow">May 15-24, 2026 · friends trip</p>
           <h1>Albania Trip Hub</h1>
-          <p className="heroCopy">Home is a launcher. Tap into each section for full details.</p>
+          <p className="heroCopy">A pocket guide for the route, stays, food targets, phrases, and last decisions.</p>
           <div className="heroActions" aria-label="Primary actions">
             <Link href="/itinerary" className="primaryButton">
               <CalendarDays size={18} />
@@ -129,20 +201,29 @@ export default function Home() {
       <section className="quickStrip" aria-label="Quick categories">
         {quickLinks.map((item) => {
           const Icon = item.icon;
+          if (item.label === "Facts") {
+            return (
+              <button key={item.label} type="button" onClick={openFunFacts}>
+                <Icon size={16} />
+                {item.label}
+              </button>
+            );
+          }
+
           return (
-            <span key={item.label}>
+            <Link key={item.label} href={quickLinkTargets[item.label]}>
               <Icon size={16} />
               {item.label}
-            </span>
+            </Link>
           );
         })}
       </section>
 
-      <section className="section">
+      <section className="section" id="dashboard">
         <div className="sectionHeader">
           <div>
             <p className="sectionKicker">Control center</p>
-            <h2>Tap Instead Of Scroll</h2>
+            <h2>Trip Dashboard</h2>
           </div>
         </div>
 
@@ -235,6 +316,158 @@ export default function Home() {
             </div>
           </article>
         ) : null}
+
+        {activeTab === "language" ? (
+          <article className="hubPanel" role="tabpanel" id="panel-language">
+            <div className="panelHeader">
+              <Languages size={20} />
+              <span>Learn the language</span>
+            </div>
+            <h3>Tap a phrase to hear it</h3>
+            <div className="hubTabs phraseTabs" role="tablist" aria-label="Phrase categories">
+              {albanianPhrases.map((category) => (
+                <button
+                  key={category.category}
+                  role="tab"
+                  aria-selected={activePhraseCategory === category.category}
+                  className={activePhraseCategory === category.category ? "hubTabButton active" : "hubTabButton"}
+                  type="button"
+                  onClick={() => setActivePhraseCategory(category.category)}
+                >
+                  {category.category}
+                </button>
+              ))}
+            </div>
+            <div className="phraseList">
+              {activePhraseGroup?.phrases.map((phrase) => (
+                <button
+                  className={spokenPhrase === phrase.albanian ? "phraseCard speaking" : "phraseCard"}
+                  key={`${phrase.albanian}-${phrase.english}`}
+                  type="button"
+                  onClick={() => speakPhrase(phrase.albanian)}
+                  aria-label={`Hear ${phrase.albanian}, ${phrase.english}`}
+                >
+                  <div>
+                    <strong>{phrase.albanian}</strong>
+                    <p className="pronunciation">{phrase.pronunciation}</p>
+                  </div>
+                  <div className="phraseMeaning">
+                    <Volume2 size={18} />
+                    <p>{phrase.english}</p>
+                    {phrase.note ? <p className="phraseNote">{phrase.note}</p> : null}
+                  </div>
+                </button>
+              ))}
+            </div>
+          </article>
+        ) : null}
+
+        {activeTab === "costs" ? (
+          <article className="hubPanel" role="tabpanel" id="panel-costs">
+            <span className="smallLabel">Money</span>
+            <h3>Costs Calculator</h3>
+            <div className="moneyLayout tabMoneyLayout">
+              <div className="moneyPanel">
+                <div className="panelHeader">
+                  <DollarSign size={20} />
+                  <span>LEK to USD Converter</span>
+                </div>
+                <div className="calculator">
+                  <div className="calcInput">
+                    <input
+                      type="number"
+                      value={lekAmount}
+                      onChange={(e) => setLekAmount(Number(e.target.value))}
+                      min="0"
+                      step="100"
+                    />
+                    <span className="currencyLabel">LEK</span>
+                  </div>
+                  <div className="calcResult">
+                    <strong>${usdAmount}</strong>
+                    <span className="currencyLabel">USD</span>
+                  </div>
+                </div>
+                <p className="exchangeRate">Rate: 1 USD ≈ 91 LEK</p>
+              </div>
+              <div className="costsPanel">
+                <div className="panelHeader">
+                  <Coffee size={20} />
+                  <span>Typical Costs</span>
+                </div>
+                <ul className="costList">
+                  {moneyInfo.typicalCosts.map((cost, idx) => (
+                    <li key={idx}>
+                      <span>{cost.item}</span>
+                      <strong>~{cost.lek} LEK</strong>
+                      <span className="usdCost">(~${(cost.lek * moneyInfo.currency.usdRate).toFixed(2)})</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="moneyTips">
+              {moneyInfo.tips.map((tip, idx) => (
+                <span className="moneyTipBadge" key={idx}>
+                  <CheckCircle2 size={14} />
+                  {tip}
+                </span>
+              ))}
+            </div>
+          </article>
+        ) : null}
+
+        {activeTab === "tips" ? (
+          <article className="hubPanel" role="tabpanel" id="panel-tips">
+            <span className="smallLabel">Travel notes</span>
+            <h3>Tips & Cautions</h3>
+            <div className="tipsGrid tabTipsGrid">
+              {travelTips.map((category, idx) => {
+                const IconComponent = {
+                  DollarSign,
+                  Car,
+                  Users,
+                  AlertCircle,
+                  Waves,
+                  Anchor,
+                  Heart,
+                  Wifi
+                }[category.icon] || AlertCircle;
+                return (
+                  <article className={`tipCard ${category.warning ? "warning" : ""}`} key={idx}>
+                    <div className="tipHeader">
+                      <IconComponent size={20} />
+                      <h3>{category.category}</h3>
+                    </div>
+                    <ul>
+                      {category.tips.map((tip, tipIdx) => (
+                        <li key={tipIdx}>{tip}</li>
+                      ))}
+                    </ul>
+                  </article>
+                );
+              })}
+            </div>
+          </article>
+        ) : null}
+
+        {activeTab === "fact" ? (
+          <article className="hubPanel factPanel" role="tabpanel" id="panel-fact">
+            <span className="smallLabel">Reload for a new one</span>
+            <h3>{dailyFunFact.title}</h3>
+            <div className="funFactCallout">
+              <Sparkles size={22} />
+              <div>
+                <p>{dailyFunFact.text}</p>
+                {dailyFunFact.note ? <strong>{dailyFunFact.note}</strong> : null}
+              </div>
+            </div>
+            <button className="cardActionButton" type="button" onClick={() => setDailyFunFact(getRandomFunFact())}>
+              <Sparkles size={14} />
+              Show another
+            </button>
+          </article>
+        ) : null}
       </section>
 
       <section className="researchSection" id="research">
@@ -259,174 +492,6 @@ export default function Home() {
               ))}
             </ul>
           </aside>
-        </div>
-      </section>
-
-      {/* Albanian Phrases Section */}
-      <section className="section" id="phrases">
-        <div className="sectionHeader">
-          <div>
-            <p className="sectionKicker">Language</p>
-            <h2>Essential Albanian Phrases</h2>
-          </div>
-        </div>
-        <div className="hubTabs" role="tablist" aria-label="Phrase categories">
-          {albanianPhrases.map((category) => (
-            <button
-              key={category.category}
-              role="tab"
-              className={activePhraseCategory === category.category ? "hubTabButton active" : "hubTabButton"}
-              type="button"
-              onClick={() => setActivePhraseCategory(category.category)}
-            >
-              {category.category}
-            </button>
-          ))}
-        </div>
-        <div className="hubPanel">
-          <div className="phraseList">
-            {albanianPhrases
-              .find((c) => c.category === activePhraseCategory)
-              ?.phrases.map((phrase, idx) => (
-                <div className="phraseCard" key={idx}>
-                  <div>
-                    <strong>{phrase.albanian}</strong>
-                    <p className="pronunciation">{phrase.pronunciation}</p>
-                  </div>
-                  <div className="phraseMeaning">
-                    <p>{phrase.english}</p>
-                    {phrase.note ? <p className="phraseNote">{phrase.note}</p> : null}
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Cultural Context Section */}
-      <section className="section" id="culture">
-        <div className="sectionHeader">
-          <div>
-            <p className="sectionKicker">Know Before You Go</p>
-            <h2>Cultural Context</h2>
-          </div>
-        </div>
-        <div className="cultureGrid">
-          {culturalFacts.map((fact, idx) => {
-            const IconComponent = {
-              Shield,
-              House: MapPinned,
-              Coffee,
-              CircleDot,
-              Triangle: MapPinned,
-              BookOpen
-            }[fact.icon] || Shield;
-            return (
-              <article className="cultureCard" key={idx}>
-                <div className="cultureIcon">
-                  <IconComponent size={24} />
-                </div>
-                <h3>{fact.title}</h3>
-                <p>{fact.text}</p>
-                <p className="cultureContext">{fact.context}</p>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Money Section with Calculator */}
-      <section className="section" id="money">
-        <div className="sectionHeader">
-          <div>
-            <p className="sectionKicker">Budget</p>
-            <h2>Money & Costs</h2>
-          </div>
-        </div>
-        <div className="moneyLayout">
-          <div className="moneyPanel">
-            <div className="panelHeader">
-              <DollarSign size={20} />
-              <span>LEK to USD Converter</span>
-            </div>
-            <div className="calculator">
-              <div className="calcInput">
-                <input
-                  type="number"
-                  value={lekAmount}
-                  onChange={(e) => setLekAmount(Number(e.target.value))}
-                  min="0"
-                  step="100"
-                />
-                <span className="currencyLabel">LEK</span>
-              </div>
-              <div className="calcResult">
-                <strong>${usdAmount}</strong>
-                <span className="currencyLabel">USD</span>
-              </div>
-            </div>
-            <p className="exchangeRate">Rate: 1 USD ≈ 91 LEK</p>
-          </div>
-          <div className="costsPanel">
-            <div className="panelHeader">
-              <Coffee size={20} />
-              <span>Typical Costs</span>
-            </div>
-            <ul className="costList">
-              {moneyInfo.typicalCosts.slice(0, 6).map((cost, idx) => (
-                <li key={idx}>
-                  <span>{cost.item}</span>
-                  <strong>~{cost.lek} LEK</strong>
-                  <span className="usdCost">(~${(cost.lek * moneyInfo.currency.usdRate).toFixed(2)})</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-        <div className="moneyTips">
-          {moneyInfo.tips.map((tip, idx) => (
-            <span className="moneyTipBadge" key={idx}>
-              <CheckCircle2 size={14} />
-              {tip}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Travel Tips Section */}
-      <section className="section" id="tips">
-        <div className="sectionHeader">
-          <div>
-            <p className="sectionKicker">Be Prepared</p>
-            <h2>Travel Tips & Cautions</h2>
-          </div>
-        </div>
-        <div className="tipsGrid">
-          {travelTips.map((category, idx) => {
-            const IconComponent = {
-              DollarSign,
-              Car,
-              Users,
-              AlertCircle,
-              Waves,
-              Anchor,
-              Heart,
-              Wifi
-            }[category.icon] || AlertCircle;
-            return (
-              <article className={`tipCard ${category.warning ? "warning" : ""}`} key={idx}>
-                <div className="tipHeader">
-                  <IconComponent size={20} />
-                  <h3>{category.category}</h3>
-                </div>
-                <ul>
-                  {category.tips.map((tip, tipIdx) => (
-                    <li key={tipIdx}>{tip}</li>
-                  ))}
-                </ul>
-              </article>
-            );
-          })}
         </div>
       </section>
 
