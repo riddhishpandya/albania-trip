@@ -56,6 +56,7 @@ export type MustGoSpot = {
   vibe: string;
   why: string;
   bestFor: string;
+  image: string;
   source?: string;
 };
 
@@ -457,7 +458,8 @@ export const mustGoSpots: MustGoSpot[] = [
     kind: "Hike",
     vibe: "Mountain reset",
     why: "A manageable waterfall hike that pairs well with Theth Church and the Lock-in Tower.",
-    bestFor: "The first big nature payoff"
+    bestFor: "The first big nature payoff",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Grunas%20Waterfall%20Theth.jpg?width=1200"
   },
   {
     title: "Gorica Bridge at Golden Hour",
@@ -465,7 +467,8 @@ export const mustGoSpots: MustGoSpot[] = [
     kind: "View",
     vibe: "Postcard Albania",
     why: "Forum and guide consensus keeps pointing back to the bridge, Mangalem, and sunset light as the Berat moment.",
-    bestFor: "Group photos before dinner"
+    bestFor: "Group photos before dinner",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Gorica%20bridge%20Berat%20Albania%202018.1.jpg?width=1200"
   },
   {
     title: "Gjipe Beach",
@@ -473,7 +476,8 @@ export const mustGoSpots: MustGoSpot[] = [
     kind: "Beach",
     vibe: "Adventure cove",
     why: "Frequently recommended as the hidden-canyon beach; expect a hike down or boat access depending on conditions.",
-    bestFor: "The most memorable beach day"
+    bestFor: "The most memorable beach day",
+    image: "https://images.unsplash.com/photo-1698603616407-1355fe0054d5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     title: "Jale or Drymades",
@@ -481,7 +485,8 @@ export const mustGoSpots: MustGoSpot[] = [
     kind: "Beach",
     vibe: "Social but scenic",
     why: "Good candidates if the group wants less effort than Gjipe but still wants classic Riviera water.",
-    bestFor: "Easy beach club day"
+    bestFor: "Easy beach club day",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Jala%20Beach%20Vlora%20Albania.jpg?width=1200"
   },
   {
     title: "Butrint",
@@ -489,7 +494,8 @@ export const mustGoSpots: MustGoSpot[] = [
     kind: "UNESCO",
     vibe: "Ancient city in nature",
     why: "Official tourism calls out Greek, Roman, Byzantine, and Venetian layers in a landscape tied to Lake Butrint and the Vivari Channel.",
-    bestFor: "Culture without giving up the coast"
+    bestFor: "Culture without giving up the coast",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Butrint%20theatre.jpg?width=1200"
   },
   {
     title: "Gjirokaster Old Town",
@@ -497,7 +503,8 @@ export const mustGoSpots: MustGoSpot[] = [
     kind: "UNESCO",
     vibe: "Stone city",
     why: "If the group wants the stronger culture day, pair the bazaar and castle with qifqi and oshaf.",
-    bestFor: "Food + history day"
+    bestFor: "Food + history day",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Gjirokaster%20old%20town.jpg?width=1200"
   },
   {
     title: "Lekuresi Castle",
@@ -505,7 +512,8 @@ export const mustGoSpots: MustGoSpot[] = [
     kind: "Sunset",
     vibe: "Big-view nightcap",
     why: "Repeatedly recommended for Sarande views; better as a sunset drink or nightcap than the whole dinner plan.",
-    bestFor: "Ending the Sarande day"
+    bestFor: "Ending the Sarande day",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/L%C3%ABkur%C3%ABsi_Castle%2C_Saranda%2C_Albania_2015-09-25_01.jpg/1280px-L%C3%ABkur%C3%ABsi_Castle%2C_Saranda%2C_Albania_2015-09-25_01.jpg"
   },
   {
     title: "Pazari i Ri + Blloku",
@@ -513,7 +521,8 @@ export const mustGoSpots: MustGoSpot[] = [
     kind: "Food / bars",
     vibe: "Capital energy",
     why: "Tirana recommendations cluster around the New Bazaar for food and Blloku for cafes, cocktails, and late-night wandering.",
-    bestFor: "Final-night city mode"
+    bestFor: "Final-night city mode",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/New%20Bazaar%20(Pazari%20i%20Ri)%2C%20Tirana%2C%20Albania.jpg?width=1200"
   }
 ];
 

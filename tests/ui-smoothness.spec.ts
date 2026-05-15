@@ -97,6 +97,45 @@ test.describe('UI Smoothness & Visual Quality', () => {
     }
   });
 
+  test('should speak a tapped language phrase', async ({ page }) => {
+    await page.evaluate(() => {
+      (window as any).__spoken = [];
+
+      class FakeUtterance {
+        text: string;
+        lang = '';
+        rate = 1;
+        onend: (() => void) | null = null;
+        onerror: (() => void) | null = null;
+
+        constructor(text: string) {
+          this.text = text;
+        }
+      }
+
+      Object.defineProperty(window, 'SpeechSynthesisUtterance', { value: FakeUtterance, configurable: true });
+      Object.defineProperty(window, 'speechSynthesis', {
+        value: {
+          cancel() {},
+          speak(utterance: FakeUtterance) {
+            (window as any).__spoken.push({ text: utterance.text, lang: utterance.lang, rate: utterance.rate });
+            utterance.onend?.();
+          }
+        },
+        configurable: true
+      });
+
+      HTMLMediaElement.prototype.play = () => Promise.reject(new Error('No local phrase audio in test'));
+    });
+
+    await page.getByRole('tab', { name: 'Language' }).click();
+    await page.getByRole('button', { name: /Hear Tungjatjeta/ }).click();
+
+    await expect
+      .poll(() => page.evaluate(() => (window as any).__spoken))
+      .toEqual([{ text: 'Tungjatjeta', lang: 'sq-AL', rate: 0.86 }]);
+  });
+
   test('should have smooth calculator interaction', async ({ page }) => {
     await page.getByRole('tab', { name: 'Costs' }).click();
 

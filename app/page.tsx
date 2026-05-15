@@ -32,7 +32,6 @@ import {
   heroImages,
   hypeMoments,
   moneyInfo,
-  quickLinks,
   sourceLinks,
   spotBacklog,
   statCards,
@@ -62,17 +61,6 @@ const homeTabs = [
 
 type HomeTabId = (typeof homeTabs)[number]["id"];
 
-const quickLinkTargets: Record<string, string> = {
-  Flights: "/itinerary",
-  Drives: "/itinerary#route",
-  Food: "/explore#food",
-  Coffee: "/explore#food",
-  Views: "/explore",
-  Ferries: "/itinerary#route",
-  Facts: "/#dashboard",
-  Links: "/#research"
-};
-
 type FunFact = {
   title: string;
   text: string;
@@ -92,6 +80,17 @@ function getRandomFunFact() {
   return allFunFacts[Math.floor(Math.random() * allFunFacts.length)];
 }
 
+function getPhraseAudioPath(phrase: string) {
+  const fileName = phrase
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+
+  return `/audio/albanian/${fileName}.mp3`;
+}
+
 export default function Home() {
   const [activeTab, setActiveTab] = useState<HomeTabId>("itinerary");
   const [activeMomentTitle, setActiveMomentTitle] = useState<string | null>(null);
@@ -106,21 +105,33 @@ export default function Home() {
   const usdAmount = (lekAmount * moneyInfo.currency.usdRate).toFixed(2);
 
   const speakPhrase = (phrase: string) => {
-    if (!("speechSynthesis" in window)) {
-      return;
-    }
+    setSpokenPhrase(phrase);
 
-    window.speechSynthesis.cancel();
+    const phraseAudio = new Audio(getPhraseAudioPath(phrase));
+    const fallbackToDeviceVoice = () => {
+      if (!("speechSynthesis" in window)) {
+        setSpokenPhrase(null);
+        return;
+      }
 
-    const utterance = new SpeechSynthesisUtterance(phrase);
-    utterance.lang = "sq-AL";
-    utterance.rate = 0.86;
+      window.speechSynthesis.cancel();
 
-    utterance.onstart = () => setSpokenPhrase(phrase);
-    utterance.onend = () => setSpokenPhrase(null);
-    utterance.onerror = () => setSpokenPhrase(null);
+      const utterance = new SpeechSynthesisUtterance(phrase);
+      utterance.lang = "sq-AL";
+      utterance.rate = 0.86;
 
-    window.speechSynthesis.speak(utterance);
+      utterance.onend = () => setSpokenPhrase(null);
+      utterance.onerror = () => setSpokenPhrase(null);
+
+      window.speechSynthesis.speak(utterance);
+    };
+
+    phraseAudio.onended = () => setSpokenPhrase(null);
+    phraseAudio.onerror = fallbackToDeviceVoice;
+
+    phraseAudio.play().catch(() => {
+      fallbackToDeviceVoice();
+    });
   };
 
   useEffect(() => {
@@ -140,11 +151,6 @@ export default function Home() {
   useEffect(() => {
     setDailyFunFact(getRandomFunFact());
   }, []);
-
-  const openFunFacts = () => {
-    setActiveTab("fact");
-    document.getElementById("dashboard")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   return (
     <main>
@@ -194,27 +200,6 @@ export default function Home() {
               <span>{stat.label}</span>
               <strong>{stat.value}</strong>
             </article>
-          );
-        })}
-      </section>
-
-      <section className="quickStrip" aria-label="Quick categories">
-        {quickLinks.map((item) => {
-          const Icon = item.icon;
-          if (item.label === "Facts") {
-            return (
-              <button key={item.label} type="button" onClick={openFunFacts}>
-                <Icon size={16} />
-                {item.label}
-              </button>
-            );
-          }
-
-          return (
-            <Link key={item.label} href={quickLinkTargets[item.label]}>
-              <Icon size={16} />
-              {item.label}
-            </Link>
           );
         })}
       </section>

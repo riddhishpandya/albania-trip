@@ -24,15 +24,20 @@ export default function ExplorePage() {
         <div className="spotGrid">
           {mustGoSpots.map((spot) => (
             <article className="spotCard" key={spot.title}>
-              <div className="spotTop">
-                <span>{spot.kind}</span>
-                <strong>{spot.area}</strong>
-              </div>
-              <h3>{spot.title}</h3>
-              <p>{spot.why}</p>
-              <div className="spotFooter">
-                <MapPinned size={16} />
-                {spot.bestFor}
+              <img className="spotImage" src={spot.image} alt={`${spot.title} in ${spot.area}`} />
+              <div className="spotContent">
+                <div>
+                  <div className="spotTop">
+                    <span>{spot.kind}</span>
+                    <strong>{spot.area}</strong>
+                  </div>
+                  <h3>{spot.title}</h3>
+                  <p>{spot.why}</p>
+                </div>
+                <div className="spotFooter">
+                  <MapPinned size={16} />
+                  {spot.bestFor}
+                </div>
               </div>
             </article>
           ))}

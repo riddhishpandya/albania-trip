@@ -115,7 +115,6 @@ main {
 .brand,
 .navLinks,
 .heroActions,
-.quickStrip,
 .detailLine,
 .tagRow span,
 .notesBlock p,
@@ -126,7 +125,6 @@ main {
 .questionPanel li,
 .backlog li,
 .factsPanel li,
-.quickStrip a,
 .sourceList a {
   display: flex;
   align-items: center;
@@ -135,7 +133,13 @@ main {
 .brand {
   gap: 10px;
   min-height: 42px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  background: rgba(8, 20, 29, 0.64);
+  color: #fff;
   font-weight: 800;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(14px);
 }
 
 .navLinks {
@@ -244,7 +248,6 @@ h3 {
 }
 
 .statsBand,
-.quickStrip,
 .section,
 .sectionGrid,
 .routeSection,
@@ -286,44 +289,6 @@ h3 {
   display: block;
   margin-top: 4px;
   font-size: 1.7rem;
-}
-
-.quickStrip {
-  gap: 10px;
-  flex-wrap: wrap;
-  padding: 34px 0 16px;
-}
-
-.quickStrip a,
-.quickStrip button {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 36px;
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  background: rgba(255, 253, 248, 0.7);
-  color: var(--muted);
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.88rem;
-  font-weight: 750;
-  transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
-}
-
-.quickStrip a:hover,
-.quickStrip a:focus-visible,
-.quickStrip button:hover,
-.quickStrip button:focus-visible {
-  border-color: var(--sage);
-  background: var(--white);
-  color: var(--olive);
-}
-
-.quickStrip a:focus-visible,
-.quickStrip button:focus-visible {
-  outline: 2px solid var(--clay);
-  outline-offset: 2px;
 }
 
 .section,
@@ -500,6 +465,20 @@ h3 {
 .spotCard {
   display: flex;
   min-height: 260px;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.spotImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.spotContent {
+  display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: space-between;
   padding: 20px;
@@ -1650,7 +1629,6 @@ h3 {
   }
 
   .statsBand,
-  .quickStrip,
   .section,
   .sectionGrid,
   .routeSection,
@@ -1682,20 +1660,6 @@ h3 {
 
   .stat strong {
     font-size: 1.32rem;
-  }
-
-  .quickStrip {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-    padding-top: 22px;
-  }
-
-  .quickStrip a,
-  .quickStrip button {
-    justify-content: flex-start;
-    min-height: 40px;
-    padding: 9px 10px;
   }
 
   .sectionHeader {
