@@ -74,6 +74,7 @@ export default function ExplorePage() {
         <div className="restaurantGrid">
           {restaurantRecs.map((rec) => (
             <article className="restaurantCard" key={`${rec.name}-${rec.city}`}>
+              {rec.image && <img src={rec.image} alt={`${rec.name} in ${rec.city}`} />}
               <div className="restaurantContent">
                 <div className="restaurantHeader">
                   <Utensils size={18} />

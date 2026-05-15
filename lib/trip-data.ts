@@ -74,6 +74,7 @@ export type RestaurantRec = {
   vibe: string;
   why: string;
   veggieOrder: string;
+  image?: string;
 };
 
 export type RouteStop = {
@@ -648,105 +649,120 @@ export const restaurantRecs: RestaurantRec[] = [
     city: "Tirana",
     vibe: "Authentic bakery chain",
     why: "Best place to try byrek — flaky phyllo pastries with spinach, cheese, or pumpkin. Budget-friendly, multiple locations.",
-    veggieOrder: "Byrek me spinaq (spinach), byrek me gjizë (cheese)"
+    veggieOrder: "Byrek me spinaq (spinach), byrek me gjizë (cheese)",
+    image: "https://images.unsplash.com/photo-1509440159596-0ffc909d2c4a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Era Restaurant",
     city: "Tirana",
     vibe: "Modern Albanian fare",
     why: "One of Tirana's most popular spots for traditional dishes in an upscale setting. Great for experiencing Albanian hospitality.",
-    veggieOrder: "Fërgesë, tavë me perime (vegetable casserole)"
+    veggieOrder: "Fërgesë, tavë me perime (vegetable casserole)",
+    image: "https://images.unsplash.com/photo-1517248135467-3c7edeb62758?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Oda Restaurant",
     city: "Tirana",
     vibe: "Historic home-style",
     why: "Family-run restaurant in a historic building near city center. Authentic atmosphere and traditional cooking.",
-    veggieOrder: "Speca të mbushur (stuffed peppers), patëllxhanë të mbushur (stuffed eggplant)"
+    veggieOrder: "Speca të mbushur (stuffed peppers), patëllxhanë të mbushur (stuffed eggplant)",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Komiteti / Radio Bar / Hemingway",
     city: "Tirana",
     vibe: "Blloku bar scene",
     why: "Relaxed bars and lounges for raki tasting and cocktails. Hemingway Bar has a cozy literary vibe.",
-    veggieOrder: "Raki me arra (walnut raki), meze platters"
+    veggieOrder: "Raki me arra (walnut raki), meze platters",
+    image: "https://images.unsplash.com/photo-1470338343257-8c2b2e0f9f53?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Thethi Hotel (request in advance)",
     city: "Theth",
     vibe: "Mountain guesthouse",
     why: "Food options are extremely limited in Theth — eat at your guesthouse. Request flija 24 hours ahead.",
-    veggieOrder: "Flija (needs 24hr notice), byrek, grilled vegetables, salads"
+    veggieOrder: "Flija (needs 24hr notice), byrek, grilled vegetables, salads",
+    image: "https://images.unsplash.com/photo-1600585152220-90363fdd309a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Vila Bekteshi",
     city: "Shkoder",
     vibe: "Traditional stopover",
     why: "Good lunch stop between Theth and Berat. Traditional Albanian fare with vegetarian byrek.",
-    veggieOrder: "Byrek, tarator, fasule plaqi"
+    veggieOrder: "Byrek, tarator, fasule plaqi",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "OPA Shkoder",
     city: "Shkoder",
     vibe: "Mediterranean",
     why: "Recommended lunch option near Rozafa Castle area.",
-    veggieOrder: "Pasta, salads, Mediterranean meze"
+    veggieOrder: "Pasta, salads, Mediterranean meze",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Ajka Restaurant",
     city: "Berat",
     vibe: "River views",
     why: "Located across the Osum River with stunning views of Mangalem's 'thousand windows.' Best sunset dining spot.",
-    veggieOrder: "Fërgesë, byrek cheese/spinach, grilled vegetables, salads"
+    veggieOrder: "Fërgesë, byrek cheese/spinach, grilled vegetables, salads",
+    image: "https://images.unsplash.com/photo-1687294086979-5165561abdf2?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Alpeta Winery",
     city: "Berat area",
     vibe: "Vineyard setting",
     why: "12km east of Berat in Roshnik Village. Scenic vineyard with tastings of local wines. Romantic dinner option.",
-    veggieOrder: "Local cheese boards, fresh vegetables, olive oil tastings"
+    veggieOrder: "Local cheese boards, fresh vegetables, olive oil tastings",
+    image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Havana Beach Bar",
     city: "Dhermi",
     vibe: "Iconic beach bar",
     why: "One of the first beach bars on Dhermi Beach (since 2001). Popular with locals. Great sunset spot.",
-    veggieOrder: "Mediterranean salads, grilled vegetables, pasta, meze platters"
+    veggieOrder: "Mediterranean salads, grilled vegetables, pasta, meze platters",
+    image: "https://images.unsplash.com/photo-1698603616407-1355fe0054d5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Cafe Kanda",
     city: "Himare",
     vibe: "Cozy traditional",
     why: "Half bar, half traditional house. Very affordable (~500 lek). Traditional Albanian dishes.",
-    veggieOrder: "Stuffed peppers, fasule (white bean stew), byrek"
+    veggieOrder: "Stuffed peppers, fasule (white bean stew), byrek",
+    image: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Lekuresi Castle Restaurant",
     city: "Sarande",
     vibe: "Castle sunset",
     why: "Inside 16th-century Ottoman castle ruins with panoramic views. THE spot for sunset dinner.",
-    veggieOrder: "Byrek, fërgesë, grilled vegetables, meze. Arrive 1hr before sunset."
+    veggieOrder: "Byrek, fërgesë, grilled vegetables, meze. Arrive 1hr before sunset.",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Principotes & Tulum Resto Lounge",
     city: "Ksamil",
     vibe: "Upscale beachside",
     why: "Stylish beachfront restaurant with stunning sea views. Good vegetarian options.",
-    veggieOrder: "Meze platters, Greek-Albanian fusion dishes"
+    veggieOrder: "Meze platters, Greek-Albanian fusion dishes",
+    image: "https://images.unsplash.com/photo-1570051008600-b34baa49e751?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Casa My Dear",
     city: "Gjirokaster",
     vibe: "Famous for qifqi",
     why: "THE place for qifqi in Gjirokaster. Fresh rice balls made daily — the dish you can only get here.",
-    veggieOrder: "Qifqi (their specialty), salads"
+    veggieOrder: "Qifqi (their specialty), salads",
+    image: "https://images.unsplash.com/photo-1546793665-c74683bf3344?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   },
   {
     name: "Spianada Meats & Greens",
     city: "Corfu Old Town",
     vibe: "Right at the square",
     why: "Located right at Spianada Square (4.8★ on TripAdvisor). Excellent salads and vegetarian dishes.",
-    veggieOrder: "Salads, spanakopita, Mediterranean dishes"
+    veggieOrder: "Salads, spanakopita, Mediterranean dishes",
+    image: "https://images.unsplash.com/photo-1555881400-74d7aca808e8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   }
 ];
 
