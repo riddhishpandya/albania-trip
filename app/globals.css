@@ -645,6 +645,310 @@ h3 {
   opacity: 0.7;
 }
 
+.navGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.navCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  will-change: transform;
+}
+
+.navCard:hover {
+  transform: translateY(-3px);
+  border-color: var(--clay);
+}
+
+.navCard svg {
+  color: var(--clay);
+}
+
+.navCard h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--olive);
+}
+
+.navCard p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.funFactCallout {
+  display: flex;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(255, 240, 211, 0.3);
+  border: 1px solid var(--sun);
+}
+
+.funFactCallout svg {
+  color: var(--sun);
+  flex-shrink: 0;
+}
+
+.funFactCallout p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.funFactCallout strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--olive);
+}
+
+.decisionList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.decisionList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.decisionList svg {
+  color: var(--clay);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.quickRefGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.quickRefCard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.quickRefCard svg {
+  color: var(--clay);
+}
+
+.quickRefCard h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--olive);
+}
+
+.quickRefCard p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.converterCard {
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.converterHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.converterHeader svg {
+  color: var(--clay);
+}
+
+.converterHeader span {
+  font-weight: 600;
+  color: var(--olive);
+}
+
+.toggleButton {
+  margin-left: auto;
+  padding: 8px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.toggleButton:hover {
+  background: var(--line);
+}
+
+.toggleButton svg {
+  color: var(--clay);
+}
+
+.converterBody {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.converterInput {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: var(--cream);
+  border: 1px solid var(--line);
+}
+
+.converterInput input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--olive);
+  outline: none;
+  width: 100%;
+}
+
+.converterArrow {
+  color: var(--muted);
+  font-size: 1.25rem;
+}
+
+.converterResult {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(57, 124, 139, 0.08);
+  border: 1px solid var(--sea);
+}
+
+.converterResult strong {
+  font-size: 1.25rem;
+  color: var(--olive);
+}
+
+.exchangeRate {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.costsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.costItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: var(--white);
+}
+
+.costName {
+  color: var(--muted);
+}
+
+.costValues {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.costValues strong {
+  color: var(--olive);
+}
+
+.costUsd {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.moneyTipsList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.moneyTipsList li {
+  padding: 14px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.factPageCallout {
+  font-size: 1.1rem;
+}
+
+.factsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.factCard {
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.factCard h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+  color: var(--olive);
+}
+
+.factCard p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.factCard strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--clay);
+  font-weight: 500;
+}
+
 .factsPanel {
   padding: 24px;
 }
@@ -1880,6 +2184,14 @@ h3 {
   .subPage {
     width: min(100% - 20px, 1180px);
     padding-top: 20px;
+  }
+
+  .navGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quickRefGrid {
+    grid-template-columns: 1fr;
   }
 
   .hypeGrid,

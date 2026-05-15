@@ -781,9 +781,6 @@ export const restaurantRecs: RestaurantRec[] = [
     mapUrl: "https://www.google.com/maps/search/Spianada+Meats+Greens+Corfu"
   }
 ];
-    image: "https://images.unsplash.com/photo-1555881400-74d7aca808e8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
-  }
-];
 
 export const funFacts = [
   "Berat and Gjirokaster are paired UNESCO historic centres, both known for preserved Ottoman-era urban architecture.",

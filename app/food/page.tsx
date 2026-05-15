@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowLeft, MapPinned, Utensils, ExternalLink } from "lucide-react";
-import { foodQuest, mustGoSpots, restaurantRecs } from "@/lib/trip-data";
+import { ArrowLeft, Utensils, ExternalLink } from "lucide-react";
+import { foodQuest, restaurantRecs } from "@/lib/trip-data";
 
-export default function ExplorePage() {
+export default function FoodPage() {
   return (
     <main className="subPage">
       <div className="subPageHeader">
@@ -10,45 +10,15 @@ export default function ExplorePage() {
           <ArrowLeft size={16} />
           Back to home
         </Link>
-        <h1>Explore</h1>
-        <p>Must-go spots and vegetarian food highlights.</p>
+        <h1>Food</h1>
+        <p>Vegetarian dishes to try and restaurant recommendations along the route.</p>
       </div>
 
       <section>
         <div className="sectionHeader">
           <div>
-            <p className="sectionKicker">Must-visit</p>
-            <h2>Top Spots</h2>
-          </div>
-        </div>
-        <div className="spotGrid">
-          {mustGoSpots.map((spot) => (
-            <article className="spotCard" key={spot.title}>
-              <img className="spotImage" src={spot.image} alt={`${spot.title} in ${spot.area}`} />
-              <div className="spotContent">
-                <div>
-                  <div className="spotTop">
-                    <span>{spot.kind}</span>
-                    <strong>{spot.area}</strong>
-                  </div>
-                  <h3>{spot.title}</h3>
-                  <p>{spot.why}</p>
-                </div>
-                <div className="spotFooter">
-                  <MapPinned size={16} />
-                  {spot.bestFor}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="mustSection" id="food">
-        <div className="sectionHeader">
-          <div>
-            <p className="sectionKicker">Vegetarian food</p>
-            <h2>Dishes to Try</h2>
+            <p className="sectionKicker">Dishes</p>
+            <h2>Vegetarian Highlights</h2>
           </div>
         </div>
         <div className="foodGrid">
@@ -64,8 +34,10 @@ export default function ExplorePage() {
             </article>
           ))}
         </div>
+      </section>
 
-        <div className="sectionHeader" style={{ marginTop: "32px" }}>
+      <section>
+        <div className="sectionHeader">
           <div>
             <p className="sectionKicker">Where to eat</p>
             <h2>Restaurant Guide</h2>
