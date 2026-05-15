@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, MapPinned, Utensils } from "lucide-react";
+import { ArrowLeft, MapPinned, Utensils, ExternalLink } from "lucide-react";
 import { foodQuest, mustGoSpots, restaurantRecs } from "@/lib/trip-data";
 
 export default function ExplorePage() {
@@ -88,6 +88,12 @@ export default function ExplorePage() {
                 <div className="restaurantOrder">
                   <strong>Order:</strong> {rec.veggieOrder}
                 </div>
+                {rec.mapUrl && (
+                  <a href={rec.mapUrl} target="_blank" rel="noopener noreferrer" className="restaurantMapLink">
+                    <ExternalLink size={14} />
+                    View on Google Maps
+                  </a>
+                )}
               </div>
             </article>
           ))}

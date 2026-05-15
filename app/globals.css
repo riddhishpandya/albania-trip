@@ -630,6 +630,21 @@ h3 {
   color: var(--olive);
 }
 
+.restaurantMapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: var(--clay);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.restaurantMapLink:hover {
+  opacity: 0.7;
+}
+
 .factsPanel {
   padding: 24px;
 }

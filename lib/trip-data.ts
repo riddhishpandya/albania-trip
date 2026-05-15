@@ -75,6 +75,7 @@ export type RestaurantRec = {
   why: string;
   veggieOrder: string;
   image?: string;
+  mapUrl?: string;
 };
 
 export type RouteStop = {
@@ -650,7 +651,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Authentic bakery chain",
     why: "Best place to try byrek — flaky phyllo pastries with spinach, cheese, or pumpkin. Budget-friendly, multiple locations.",
     veggieOrder: "Byrek me spinaq (spinach), byrek me gjizë (cheese)",
-    image: "https://images.unsplash.com/photo-1509440159596-0ffc909d2c4a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1509440159596-0ffc909d2c4a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Mulliri+i+Vjeter+Tirana"
   },
   {
     name: "Era Restaurant",
@@ -658,7 +660,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Modern Albanian fare",
     why: "One of Tirana's most popular spots for traditional dishes in an upscale setting. Great for experiencing Albanian hospitality.",
     veggieOrder: "Fërgesë, tavë me perime (vegetable casserole)",
-    image: "https://images.unsplash.com/photo-1517248135467-3c7edeb62758?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1517248135467-3c7edeb62758?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Era+Restaurant+Tirana+Albania"
   },
   {
     name: "Oda Restaurant",
@@ -666,7 +669,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Historic home-style",
     why: "Family-run restaurant in a historic building near city center. Authentic atmosphere and traditional cooking.",
     veggieOrder: "Speca të mbushur (stuffed peppers), patëllxhanë të mbushur (stuffed eggplant)",
-    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Oda+Restaurant+Tirana+Albania"
   },
   {
     name: "Komiteti / Radio Bar / Hemingway",
@@ -674,7 +678,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Blloku bar scene",
     why: "Relaxed bars and lounges for raki tasting and cocktails. Hemingway Bar has a cozy literary vibe.",
     veggieOrder: "Raki me arra (walnut raki), meze platters",
-    image: "https://images.unsplash.com/photo-1470338343257-8c2b2e0f9f53?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1470338343257-8c2b2e0f9f53?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Hemingway+Bar+Tirana+Blloku"
   },
   {
     name: "Thethi Hotel (request in advance)",
@@ -682,7 +687,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Mountain guesthouse",
     why: "Food options are extremely limited in Theth — eat at your guesthouse. Request flija 24 hours ahead.",
     veggieOrder: "Flija (needs 24hr notice), byrek, grilled vegetables, salads",
-    image: "https://images.unsplash.com/photo-1600585152220-90363fdd309a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1600585152220-90363fdd309a?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Thethi+Hotel+Theth+Albania"
   },
   {
     name: "Vila Bekteshi",
@@ -690,7 +696,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Traditional stopover",
     why: "Good lunch stop between Theth and Berat. Traditional Albanian fare with vegetarian byrek.",
     veggieOrder: "Byrek, tarator, fasule plaqi",
-    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Vila+Bekteshi+Shkoder+Albania"
   },
   {
     name: "OPA Shkoder",
@@ -698,7 +705,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Mediterranean",
     why: "Recommended lunch option near Rozafa Castle area.",
     veggieOrder: "Pasta, salads, Mediterranean meze",
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/OPA+Shkoder+Albania"
   },
   {
     name: "Ajka Restaurant",
@@ -706,7 +714,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "River views",
     why: "Located across the Osum River with stunning views of Mangalem's 'thousand windows.' Best sunset dining spot.",
     veggieOrder: "Fërgesë, byrek cheese/spinach, grilled vegetables, salads",
-    image: "https://images.unsplash.com/photo-1687294086979-5165561abdf2?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1687294086979-5165561abdf2?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Ajka+Restaurant+Berat+Albania"
   },
   {
     name: "Alpeta Winery",
@@ -714,7 +723,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Vineyard setting",
     why: "12km east of Berat in Roshnik Village. Scenic vineyard with tastings of local wines. Romantic dinner option.",
     veggieOrder: "Local cheese boards, fresh vegetables, olive oil tastings",
-    image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Alpeta+Winery+Roshnik+Berat"
   },
   {
     name: "Havana Beach Bar",
@@ -722,7 +732,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Iconic beach bar",
     why: "One of the first beach bars on Dhermi Beach (since 2001). Popular with locals. Great sunset spot.",
     veggieOrder: "Mediterranean salads, grilled vegetables, pasta, meze platters",
-    image: "https://images.unsplash.com/photo-1698603616407-1355fe0054d5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1698603616407-1355fe0054d5?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Havana+Beach+Bar+Dhermi+Albania"
   },
   {
     name: "Cafe Kanda",
@@ -730,7 +741,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Cozy traditional",
     why: "Half bar, half traditional house. Very affordable (~500 lek). Traditional Albanian dishes.",
     veggieOrder: "Stuffed peppers, fasule (white bean stew), byrek",
-    image: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Cafe+Kanda+Himare+Albania"
   },
   {
     name: "Lekuresi Castle Restaurant",
@@ -738,7 +750,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Castle sunset",
     why: "Inside 16th-century Ottoman castle ruins with panoramic views. THE spot for sunset dinner.",
     veggieOrder: "Byrek, fërgesë, grilled vegetables, meze. Arrive 1hr before sunset.",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Lekuresi+Castle+Restaurant+Sarande"
   },
   {
     name: "Principotes & Tulum Resto Lounge",
@@ -746,7 +759,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Upscale beachside",
     why: "Stylish beachfront restaurant with stunning sea views. Good vegetarian options.",
     veggieOrder: "Meze platters, Greek-Albanian fusion dishes",
-    image: "https://images.unsplash.com/photo-1570051008600-b34baa49e751?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1570051008600-b34baa49e751?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Principotes+Ksamil+Albania"
   },
   {
     name: "Casa My Dear",
@@ -754,7 +768,8 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Famous for qifqi",
     why: "THE place for qifqi in Gjirokaster. Fresh rice balls made daily — the dish you can only get here.",
     veggieOrder: "Qifqi (their specialty), salads",
-    image: "https://images.unsplash.com/photo-1546793665-c74683bf3344?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    image: "https://images.unsplash.com/photo-1546793665-c74683bf3344?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Casa+My+Dear+Gjirokaster"
   },
   {
     name: "Spianada Meats & Greens",
@@ -762,6 +777,10 @@ export const restaurantRecs: RestaurantRec[] = [
     vibe: "Right at the square",
     why: "Located right at Spianada Square (4.8★ on TripAdvisor). Excellent salads and vegetarian dishes.",
     veggieOrder: "Salads, spanakopita, Mediterranean dishes",
+    image: "https://images.unsplash.com/photo-1555881400-74d7aca808e8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    mapUrl: "https://www.google.com/maps/search/Spianada+Meats+Greens+Corfu"
+  }
+];
     image: "https://images.unsplash.com/photo-1555881400-74d7aca808e8?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
   }
 ];
