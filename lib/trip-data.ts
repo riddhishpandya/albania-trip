@@ -575,7 +575,7 @@ export const foodQuest: FoodQuest[] = [
     dish: "Fasule plaqi (baked white beans)",
     area: "Berat",
     why: "Hearty baked white kidney beans with tomatoes, onions, and herbs. Simple, filling, and vegetarian.",
-    image: "https://images.unsplash.com/photo-1540994557523-625a158e1f66?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
     target: "Eni Traditional Food or Hotel Mangalemi Restaurant"
   },
   {
