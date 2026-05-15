@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowLeft, MapPinned } from "lucide-react";
-import { foodQuest, mustGoSpots } from "@/lib/trip-data";
+import { ArrowLeft, MapPinned, Utensils } from "lucide-react";
+import { foodQuest, mustGoSpots, restaurantRecs } from "@/lib/trip-data";
 
 export default function ExplorePage() {
   return (
@@ -47,8 +47,8 @@ export default function ExplorePage() {
       <section className="mustSection" id="food">
         <div className="sectionHeader">
           <div>
-            <p className="sectionKicker">Food quest</p>
-            <h2>Vegetarian Highlights</h2>
+            <p className="sectionKicker">Vegetarian food</p>
+            <h2>Dishes to Try</h2>
           </div>
         </div>
         <div className="foodGrid">
@@ -60,6 +60,33 @@ export default function ExplorePage() {
                 <h3>{food.dish}</h3>
                 <p>{food.why}</p>
                 {food.target ? <strong>{food.target}</strong> : null}
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="sectionHeader" style={{ marginTop: "32px" }}>
+          <div>
+            <p className="sectionKicker">Where to eat</p>
+            <h2>Restaurant Guide</h2>
+          </div>
+        </div>
+        <div className="restaurantGrid">
+          {restaurantRecs.map((rec) => (
+            <article className="restaurantCard" key={`${rec.name}-${rec.city}`}>
+              <div className="restaurantContent">
+                <div className="restaurantHeader">
+                  <Utensils size={18} />
+                  <div>
+                    <h3>{rec.name}</h3>
+                    <span className="smallLabel">{rec.city}</span>
+                  </div>
+                </div>
+                <p className="restaurantVibe">{rec.vibe}</p>
+                <p>{rec.why}</p>
+                <div className="restaurantOrder">
+                  <strong>Order:</strong> {rec.veggieOrder}
+                </div>
               </div>
             </article>
           ))}

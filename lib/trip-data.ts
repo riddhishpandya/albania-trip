@@ -68,6 +68,14 @@ export type FoodQuest = {
   target?: string;
 };
 
+export type RestaurantRec = {
+  name: string;
+  city: string;
+  vibe: string;
+  why: string;
+  veggieOrder: string;
+};
+
 export type RouteStop = {
   number: number;
   name: string;
@@ -528,50 +536,217 @@ export const mustGoSpots: MustGoSpot[] = [
 
 export const foodQuest: FoodQuest[] = [
   {
-    dish: "Spinach or cheese byrek",
-    area: "Tirana / road snacks",
-    why: "Savory pie energy. Perfect vegetarian car snack before the long mountain and coast drives.",
-    image: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Byrek_me_spinaq.jpg"
+    dish: "Byrek (spinach, cheese, or pumpkin)",
+    area: "Tirana / everywhere",
+    why: "Albania's iconic flaky phyllo pastry. Get it at Mulliri i Vjetër bakery chains or any byrektore. Perfect road snack.",
+    image: "https://upload.wikimedia.org/wikipedia/commons/b/b9/Byrek_me_spinaq.jpg",
+    target: "Mulliri i Vjetër (Blloku area)"
   },
   {
-    dish: "Fli",
-    area: "Theth",
-    why: "A northern-style layered pancake dish to ask for through the hotel or guesthouse.",
+    dish: "Fërgesë (peppers, tomatoes, cheese bake)",
+    area: "Tirana",
+    why: "Albania's national dish — baked peppers, tomatoes, onions, and gjizë (fresh cheese). Comfort food at its finest.",
+    image: "https://images.unsplash.com/photo-1574653853027-5382a3d23a15?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Era Restaurant or Oda Restaurant"
+  },
+  {
+    dish: "Fli / Flija (layered mountain pancake)",
+    area: "Theth / northern Albania",
+    why: "Traditional layered crepe-like dish made with flour, water, butter, and cream. Takes hours to prepare — ask your guesthouse 24hrs in advance.",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Albainan_Pancake_Dish_20240324_092020.jpg/960px-Albainan_Pancake_Dish_20240324_092020.jpg",
-    target: "Ask Thethi Hotel before arrival"
+    target: "Ask Thethi Hotel before arrival (24hr notice needed)"
+  },
+  {
+    dish: "Tarator (cold yogurt-cucumber soup)",
+    area: "Shkoder / Berat / everywhere",
+    why: "Refreshing summer dish: cold yogurt, cucumber, garlic, dill. Order at Rozafa Castle lunch stop or anywhere in Berat.",
+    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Vila Bekteshi (Shkoder) or Eni Traditional Food (Berat)"
   },
   {
     dish: "Berat wine + vegetarian mezze",
     area: "Berat",
-    why: "Berat is one of the best nights to slow down: castle, bridge, local wine, salads, cheese, grilled vegetables, and old-town food.",
+    why: "Berat is Albania's wine region with 6,000 years of wine history. Pair local reds with cheese boards, grilled vegetables, and river-view dining.",
     image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
-    target: "Tradita e Beratit / Gorica area"
+    target: "Ajka Restaurant (river views) or Alpeta Winery (vineyard setting)"
   },
   {
-    dish: "Village salad + fries + cheese",
-    area: "Sarande",
-    why: "A reliable vegetarian coastal meal when the table wants something easy between beach time and sunset drinks.",
+    dish: "Fasule plaqi (baked white beans)",
+    area: "Berat",
+    why: "Hearty baked white kidney beans with tomatoes, onions, and herbs. Simple, filling, and vegetarian.",
+    image: "https://images.unsplash.com/photo-1540994557523-625a158e1f66?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Eni Traditional Food or Hotel Mangalemi Restaurant"
+  },
+  {
+    dish: "Riviera beach lunch",
+    area: "Dhermi / Himare",
+    why: "Mediterranean salads, grilled vegetables, pasta, and meze with sea views. Beach clubs and tavernas along the coast.",
     image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
-    target: "Look for non-promenade tavernas or Lekuresi views"
+    target: "Havana Beach Bar (Dhermi sunset) or Cafe Kanda (Himare, ~500 lek)"
   },
   {
-    dish: "Qifqi",
+    dish: "Qifqi (Gjirokaster rice balls)",
     area: "Gjirokaster",
-    why: "Vegetarian rice balls associated with Gjirokaster, usually seasoned with herbs and cooked in a special pan.",
-    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    why: "Vegetarian rice balls seasoned with herbs and eggs, cooked in a special pan. A Gjirokaster specialty you can't get elsewhere.",
+    image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Casa My Dear (famous for qifqi) or Old Bazaar vendors"
   },
   {
-    dish: "Oshaf",
+    dish: "Oshaf (fig dessert with sheep milk)",
     area: "Gjirokaster",
-    why: "A local vegetarian dessert made with dried figs and sheep milk. This is the food fact everyone will remember.",
-    image: "https://images.unsplash.com/photo-1541781550486-81b7a2328578?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200"
+    why: "Dried figs cooked with sheep milk and sugar, then chilled. A local vegetarian dessert unique to this region.",
+    image: "https://images.unsplash.com/photo-1541781550486-81b7a2328578?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Restorant Tradita or ask at any traditional restaurant (seasonal)"
+  },
+  {
+    dish: "Lekuresi Castle sunset dinner",
+    area: "Sarande",
+    why: "16th-century Ottoman castle ruins with panoramic views of Saranda Bay, Corfu, and Butrint Lagoon. Best sunset spot.",
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Lekuresi Castle Restaurant (arrive 1hr before sunset)"
+  },
+  {
+    dish: "Ksamil beachfront meze",
+    area: "Ksamil",
+    why: "Greek-Albanian fusion: tzatziki, dolmades, spanakopita, great salads. Beach clubs with turquoise water views.",
+    image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Principotes & Tulum Resto Lounge"
+  },
+  {
+    dish: "Corfu Old Town lunch",
+    area: "Corfu (day trip)",
+    why: "Greek vegetarian classics: moussaka (ask if veg), dolmades, saganaki (fried cheese), loukoumades (honey donuts).",
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Spianada Meats & Greens (right at Spianada Square)"
+  },
+  {
+    dish: "Ballokume (corn flour cookie)",
+    area: "Tirana / Elbasan origin",
+    why: "Traditional cookie eaten on Dita e Verës (March 14 spring festival). Named when an Ottoman ruler said 'It's as good as lokum!'",
+    image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Pazari i Ri (New Bazaar) bakeries"
+  },
+  {
+    dish: "Petulla (fried dough)",
+    area: "Tirana / breakfast everywhere",
+    why: "Fried dough served with feta cheese and raspberry jam. Popular breakfast or snack.",
+    image: "https://images.unsplash.com/photo-1506459225024-1428097a7e18?auto=format&fit=crop&fm=jpg&ixlib=rb-4.1.0&q=80&w=1200",
+    target: "Street vendors or any breakfast cafe"
   },
   {
     dish: "Raki tasting",
     area: "Tirana",
-    why: "Several local threads point visitors toward relaxed bars for raki and cocktails.",
+    why: "Albanian brandy distilled from grapes. Try raki me arra (walnut raki) — a Berat specialty. Relaxed bar scene in Blloku.",
     image: "https://upload.wikimedia.org/wikipedia/commons/3/38/Raki_me_arra.jpg",
-    target: "Komiteti, Radio Bar, Hemingway, Nouvelle Vague"
+    target: "Komiteti, Radio Bar, Hemingway Bar, Nouvelle Vague"
+  }
+];
+
+export const restaurantRecs: RestaurantRec[] = [
+  {
+    name: "Mulliri i Vjetër",
+    city: "Tirana",
+    vibe: "Authentic bakery chain",
+    why: "Best place to try byrek — flaky phyllo pastries with spinach, cheese, or pumpkin. Budget-friendly, multiple locations.",
+    veggieOrder: "Byrek me spinaq (spinach), byrek me gjizë (cheese)"
+  },
+  {
+    name: "Era Restaurant",
+    city: "Tirana",
+    vibe: "Modern Albanian fare",
+    why: "One of Tirana's most popular spots for traditional dishes in an upscale setting. Great for experiencing Albanian hospitality.",
+    veggieOrder: "Fërgesë, tavë me perime (vegetable casserole)"
+  },
+  {
+    name: "Oda Restaurant",
+    city: "Tirana",
+    vibe: "Historic home-style",
+    why: "Family-run restaurant in a historic building near city center. Authentic atmosphere and traditional cooking.",
+    veggieOrder: "Speca të mbushur (stuffed peppers), patëllxhanë të mbushur (stuffed eggplant)"
+  },
+  {
+    name: "Komiteti / Radio Bar / Hemingway",
+    city: "Tirana",
+    vibe: "Blloku bar scene",
+    why: "Relaxed bars and lounges for raki tasting and cocktails. Hemingway Bar has a cozy literary vibe.",
+    veggieOrder: "Raki me arra (walnut raki), meze platters"
+  },
+  {
+    name: "Thethi Hotel (request in advance)",
+    city: "Theth",
+    vibe: "Mountain guesthouse",
+    why: "Food options are extremely limited in Theth — eat at your guesthouse. Request flija 24 hours ahead.",
+    veggieOrder: "Flija (needs 24hr notice), byrek, grilled vegetables, salads"
+  },
+  {
+    name: "Vila Bekteshi",
+    city: "Shkoder",
+    vibe: "Traditional stopover",
+    why: "Good lunch stop between Theth and Berat. Traditional Albanian fare with vegetarian byrek.",
+    veggieOrder: "Byrek, tarator, fasule plaqi"
+  },
+  {
+    name: "OPA Shkoder",
+    city: "Shkoder",
+    vibe: "Mediterranean",
+    why: "Recommended lunch option near Rozafa Castle area.",
+    veggieOrder: "Pasta, salads, Mediterranean meze"
+  },
+  {
+    name: "Ajka Restaurant",
+    city: "Berat",
+    vibe: "River views",
+    why: "Located across the Osum River with stunning views of Mangalem's 'thousand windows.' Best sunset dining spot.",
+    veggieOrder: "Fërgesë, byrek cheese/spinach, grilled vegetables, salads"
+  },
+  {
+    name: "Alpeta Winery",
+    city: "Berat area",
+    vibe: "Vineyard setting",
+    why: "12km east of Berat in Roshnik Village. Scenic vineyard with tastings of local wines. Romantic dinner option.",
+    veggieOrder: "Local cheese boards, fresh vegetables, olive oil tastings"
+  },
+  {
+    name: "Havana Beach Bar",
+    city: "Dhermi",
+    vibe: "Iconic beach bar",
+    why: "One of the first beach bars on Dhermi Beach (since 2001). Popular with locals. Great sunset spot.",
+    veggieOrder: "Mediterranean salads, grilled vegetables, pasta, meze platters"
+  },
+  {
+    name: "Cafe Kanda",
+    city: "Himare",
+    vibe: "Cozy traditional",
+    why: "Half bar, half traditional house. Very affordable (~500 lek). Traditional Albanian dishes.",
+    veggieOrder: "Stuffed peppers, fasule (white bean stew), byrek"
+  },
+  {
+    name: "Lekuresi Castle Restaurant",
+    city: "Sarande",
+    vibe: "Castle sunset",
+    why: "Inside 16th-century Ottoman castle ruins with panoramic views. THE spot for sunset dinner.",
+    veggieOrder: "Byrek, fërgesë, grilled vegetables, meze. Arrive 1hr before sunset."
+  },
+  {
+    name: "Principotes & Tulum Resto Lounge",
+    city: "Ksamil",
+    vibe: "Upscale beachside",
+    why: "Stylish beachfront restaurant with stunning sea views. Good vegetarian options.",
+    veggieOrder: "Meze platters, Greek-Albanian fusion dishes"
+  },
+  {
+    name: "Casa My Dear",
+    city: "Gjirokaster",
+    vibe: "Famous for qifqi",
+    why: "THE place for qifqi in Gjirokaster. Fresh rice balls made daily — the dish you can only get here.",
+    veggieOrder: "Qifqi (their specialty), salads"
+  },
+  {
+    name: "Spianada Meats & Greens",
+    city: "Corfu Old Town",
+    vibe: "Right at the square",
+    why: "Located right at Spianada Square (4.8★ on TripAdvisor). Excellent salads and vegetarian dishes.",
+    veggieOrder: "Salads, spanakopita, Mediterranean dishes"
   }
 ];
 

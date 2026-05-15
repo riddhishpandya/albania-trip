@@ -550,6 +550,79 @@ h3 {
   color: var(--olive);
 }
 
+.restaurantGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.restaurantCard {
+  background: var(--white);
+  border: 1px solid var(--line);
+  padding: 18px;
+  will-change: transform;
+}
+
+.restaurantCard:hover {
+  transform: translateY(-2px);
+  border-color: var(--sun);
+}
+
+.restaurantContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.restaurantHeader {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.restaurantHeader svg {
+  color: var(--clay);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.restaurantHeader h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--olive);
+}
+
+.restaurantHeader .smallLabel {
+  display: block;
+  margin-top: 2px;
+}
+
+.restaurantVibe {
+  font-size: 0.8rem;
+  color: var(--clay);
+  font-weight: 500;
+  margin: 0;
+}
+
+.restaurantCard p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.restaurantOrder {
+  margin-top: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.restaurantOrder strong {
+  color: var(--olive);
+}
+
 .factsPanel {
   padding: 24px;
 }
@@ -1790,6 +1863,7 @@ h3 {
   .hypeGrid,
   .spotGrid,
   .foodGrid,
+  .restaurantGrid,
   .tipsGrid,
   .momentPicker,
   .hubTabs {
